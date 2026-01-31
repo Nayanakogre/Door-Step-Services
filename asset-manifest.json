@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/Door-Step-Services/static/css/main.cd15d452.css",
+    "main.js": "/Door-Step-Services/static/js/main.226fc6a3.js",
+    "static/js/453.594b427b.chunk.js": "/Door-Step-Services/static/js/453.594b427b.chunk.js",
+    "index.html": "/Door-Step-Services/index.html",
+    "main.cd15d452.css.map": "/Door-Step-Services/static/css/main.cd15d452.css.map",
+    "main.226fc6a3.js.map": "/Door-Step-Services/static/js/main.226fc6a3.js.map",
+    "453.594b427b.chunk.js.map": "/Door-Step-Services/static/js/453.594b427b.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.cd15d452.css",
+    "static/js/main.226fc6a3.js"
+  ]
+}

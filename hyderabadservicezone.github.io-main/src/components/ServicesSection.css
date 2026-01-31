@@ -1,0 +1,191 @@
+.services-section {
+  position: relative;
+  z-index: 2;
+  margin-top: -100px; /* Pull up to overlap Hero */
+  margin-bottom: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 200px;
+}
+
+.services-floating-box {
+  background: rgba(255,255,255,0.85);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.18);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: 32px;
+  padding: 36px 32px 32px 32px;
+  max-width: 1200px;
+  width: 100%;
+  min-height: 180px;
+  text-align: center;
+  border: 1px solid rgba(255,255,255,0.18);
+  position: relative;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.services-title {
+  font-size: 2.3rem;
+  font-weight: 800;
+  color: #ff9800;
+  margin-bottom: 10px;
+}
+
+.services-divider {
+  width: 60px;
+  height: 4px;
+  background: #ff9800;
+  border-radius: 2px;
+  margin: 0 auto 24px auto;
+}
+
+.services-list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: stretch;
+  gap: 32px;
+  width: 100%;
+  overflow-x: auto;
+  padding-bottom: 8px;
+  scrollbar-width: thin;
+  scrollbar-color: #ff9800 #ffe0b2;
+}
+.services-list::-webkit-scrollbar {
+  height: 8px;
+}
+.services-list::-webkit-scrollbar-thumb {
+  background: #ff9800;
+  border-radius: 8px;
+}
+.services-list::-webkit-scrollbar-track {
+  background: #ffe0b2;
+  border-radius: 8px;
+}
+
+.service-item {
+  background: rgba(255,255,255,0.6);
+  border-radius: 20px;
+  box-shadow: 0 2px 12px rgba(255,152,0,0.08);
+  padding: 24px 18px 18px 18px;
+  min-width: 150px;
+  max-width: 180px;
+  flex: 1 1 150px;
+  cursor: pointer;
+  transition: transform 0.18s, box-shadow 0.18s, background 0.18s;
+  border: 1.5px solid #ffe0b2;
+  outline: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.service-item:hover, .service-item:focus {
+  background: #fff;
+  transform: translateY(-8px) scale(1.04);
+  box-shadow: 0 8px 32px rgba(255,152,0,0.13);
+  border-color: #ff9800;
+}
+
+.service-icon {
+  font-size: 2.2rem;
+  margin-bottom: 10px;
+}
+
+.service-name {
+  font-size: 1.08rem;
+  font-weight: 700;
+  color: #ff9800;
+}
+
+/* Modal Styles */
+.service-modal-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.32);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.service-modal {
+  background: #fff;
+  border-radius: 24px;
+  box-shadow: 0 8px 32px rgba(31,38,135,0.18);
+  padding: 40px 32px 32px 32px;
+  max-width: 400px;
+  width: 90vw;
+  text-align: center;
+  position: relative;
+  animation: modalIn 0.22s cubic-bezier(.4,2,.6,1) both;
+}
+@keyframes modalIn {
+  from { opacity: 0; transform: scale(0.92) translateY(30px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+.service-modal-close {
+  position: absolute;
+  top: 16px;
+  right: 18px;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: #ff9800;
+  cursor: pointer;
+  transition: color 0.18s;
+}
+.service-modal-close:hover {
+  color: #e65100;
+}
+.service-modal-icon {
+  font-size: 3.2rem;
+  margin-bottom: 12px;
+  display: block;
+}
+.service-modal-title {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: #ff9800;
+  margin-bottom: 10px;
+}
+.service-modal-desc {
+  font-size: 1.08rem;
+  color: #444;
+  margin-bottom: 0;
+}
+
+@media (max-width: 900px) {
+  .services-floating-box {
+    max-width: 98vw;
+    padding: 18px 4px 16px 4px;
+  }
+  .services-list {
+    gap: 12px;
+  }
+  .service-item {
+    min-width: 120px;
+    max-width: 140px;
+    padding: 12px 4px 10px 4px;
+  }
+}
+
+@media (max-width: 600px) {
+  .services-list {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    gap: 12px;
+    justify-content: flex-start;
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+  .service-item {
+    min-width: 40vw;
+    max-width: 40vw;
+    flex: 0 0 40vw;
+    /* Show 3 at a time: 100vw - (2 * 8px gap) = 80vw approx for 3 items */
+  }
+} 

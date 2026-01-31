@@ -1,0 +1,24 @@
+.contact-hero {
+    position: relative;
+    height: 400px;
+    
+    /* or if directly in public folder: */
+    /* background: url('/logo-removebg-preview.png') center/cover no-repeat; */
+    overflow: hidden;
+  }
+  
+  .contact-hero .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to right, #ffb400cc, #ffcc00cc);
+    z-index: 0;
+  }
+  
+  .contact-hero .container {
+    z-index: 2;
+    position: relative;
+  }
+  

@@ -1,0 +1,31 @@
+.header-logo {
+  width: 200px;
+  height: 80px;
+  border-radius: 16px;
+  object-fit: contain;
+}
+
+.header-nav-btn {
+  /* color: #fff !important; */
+  font-weight: 600;
+  font-size: 1.1rem;
+  background: transparent !important;
+  transition: color 0.2s;
+}
+
+.header-nav-btn:hover, .header-nav-btn:focus {
+  color: #ff9800 !important;
+  background: transparent !important;
+}
+
+.header-menu-item {
+  /* color: #222 !important; */
+  font-weight: 500;
+  font-size: 1rem;
+  transition: color 0.2s;
+}
+
+.header-menu-item:hover, .header-menu-item:focus {
+  color: #ff9800 !important;
+  background: rgba(255,152,0,0.08) !important;
+} 

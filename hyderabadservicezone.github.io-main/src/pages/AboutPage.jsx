@@ -1,136 +1,187 @@
 import React from 'react';
-import { Box, Typography, Grid, Paper} from '@mui/material';
-import CheckCircleIcon from '@mui/icons-material/CheckCircle';
-import WhatsAppIcon from '@mui/icons-material/WhatsApp';
-import CallIcon from '@mui/icons-material/Call';
+import { Box, Typography, List, ListItem, ListItemIcon, Divider } from '@mui/material';
+import { 
+  CheckCircle, 
+  WhatsApp, 
+  Call, 
+  Engineering, 
+  WorkspacePremium, 
+  HistoryEdu,
+  LocationOn,
+  Verified
+} from '@mui/icons-material';
 
 const AboutPage = () => {
-  return (
-    <>
-      <section id="about" className="about-section">
-        <div className="about-container">
-          <div className="about-image-col">
-            <img
-              src={process.env.PUBLIC_URL+"/technician.png"}
-              alt="Professional appliance technician at work"
-              className="about-image"
-              loading="lazy"
-            />
-          </div>
-          <div className="about-details-col">
-            <div className="about-badge">About Hyderabad Service Zone</div>
-            <h2 className="about-title">
-              Professional Appliance Repair Services You Can Count On
-            </h2>
-            <div className="about-desc">
-              <p>
-                At <span className="about-highlight">Hyderabad Service Zone</span>, we
-                provide fast, reliable, and affordable repair services for all
-                major home appliances — including washing machines, ACs, fridges,
-                microwaves, dishwashers, and air coolers.
-              </p>
-              <p>
-                Our trained technicians offer{' '}
-                <span className="about-highlight">doorstep service across Hyderabad</span>,
-                with transparent pricing and a customer-first approach you can trust.
-              </p>
-            </div>
-            <div className="about-stats-row">
-              <div className="about-stat">
-                <div className="about-stat-value">5+ Years</div>
-                <div className="about-stat-label">Years Experience in Home<br />Appliance Repairs</div>
-              </div>
-              <div className="about-stat">
-                <div className="about-stat-value">700+</div>
-                <div className="about-stat-label">Successfully Repairs Finished<br />in Hyderabad</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+  const theme = {
+    primary: '#0f172a', // Deep Slate
+    accent: '#2563eb',  // Trust Blue
+    bg: '#f8fafc',
+    card: '#ffffff',
+    border: '#e2e8f0',
+    textMain: '#1e293b',
+    textMuted: '#64748b',
+    success: '#059669',
+  };
 
-      {/* Modern Why Choose Us Section */}
-      <Box sx={{ background: '#fff', py: { xs: 5, md: 8 }, px: 2, maxWidth: 1100, mx: 'auto', borderRadius: 4, boxShadow: 2, mt: 5 }}>
-        <Typography variant="h4" fontWeight={800} align="center" gutterBottom>
-          Why Choose Us?
-        </Typography>
-        <Grid container spacing={3} justifyContent="center" sx={{ mt: 2 }}>
-          <Grid item xs={12} sm={6} md={4}>
-            <Paper elevation={3} sx={{ p: 3, textAlign: 'center', borderRadius: 3 }}>
-              <Typography variant="h5" fontWeight={700} color="primary" gutterBottom>
-                1000+ Happy Customers
-              </Typography>
-              <Typography variant="body1">across Hyderabad</Typography>
-            </Paper>
-          </Grid>
-          <Grid item xs={12} sm={6} md={4}>
-            <Paper elevation={3} sx={{ p: 3, textAlign: 'center', borderRadius: 3 }}>
-              <Typography variant="h5" fontWeight={700} color="primary" gutterBottom>
-                Same-day Doorstep Service
-              </Typography>
-              <Typography variant="body1">(subject to availability)</Typography>
-            </Paper>
-          </Grid>
-          <Grid item xs={12} sm={6} md={4}>
-            <Paper elevation={3} sx={{ p: 3, textAlign: 'center', borderRadius: 3 }}>
-              <Typography variant="h5" fontWeight={700} color="primary" gutterBottom>
-                ₹199 Inspection Charges
-              </Typography>
-              <Typography variant="body1">Lowest starting price</Typography>
-            </Paper>
-          </Grid>
-          <Grid item xs={12} sm={6} md={4}>
-            <Paper elevation={3} sx={{ p: 3, textAlign: 'center', borderRadius: 3 }}>
-              <Typography variant="h6" fontWeight={700} color="primary" gutterBottom>
-                <CheckCircleIcon color="success" sx={{ verticalAlign: 'middle', mr: 1 }} />
-                Only Genuine Spare Parts
-              </Typography>
-              <Typography variant="body2">We use only original, quality parts</Typography>
-            </Paper>
-          </Grid>
-          <Grid item xs={12} sm={6} md={4}>
-            <Paper elevation={3} sx={{ p: 3, textAlign: 'center', borderRadius: 3 }}>
-              <Typography variant="h6" fontWeight={700} color="primary" gutterBottom>
-                <CheckCircleIcon color="success" sx={{ verticalAlign: 'middle', mr: 1 }} />
-                Transparent Pricing
-              </Typography>
-              <Typography variant="body2">No hidden fees</Typography>
-            </Paper>
-          </Grid>
-          <Grid item xs={12} sm={6} md={4}>
-            <Paper elevation={3} sx={{ p: 3, textAlign: 'center', borderRadius: 3 }}>
-              <Typography variant="h6" fontWeight={700} color="primary" gutterBottom>
-                <CheckCircleIcon color="success" sx={{ verticalAlign: 'middle', mr: 1 }} />
-                Skilled & Verified Technicians
-              </Typography>
-              <Typography variant="body2">Background-checked, experienced staff</Typography>
-            </Paper>
-          </Grid>
-        </Grid>
-        <Box sx={{ mt: 5, textAlign: 'center' }}>
-          <Typography variant="body1" sx={{ mb: 2, fontSize: '1.1rem' }}>
-            We're committed to building long-term trust by providing quality service, clear communication, and full transparency in every interaction.
-          </Typography>
-          <Typography variant="h6" fontWeight={700} sx={{ mt: 2 }}>
-            📍 Service Area: We serve customers across Hyderabad ,AP,Telangana AND nearby areas.
-          </Typography>
-          <Typography variant="body1" sx={{ mt: 2 }}>
-            <b>Need Help?</b> <br />
-            <span style={{ display: 'inline-flex', alignItems: 'center', gap: 8 }}>
-              <CallIcon color="primary" sx={{ mr: 1 }} />
-              <a href="tel:+919542220772" style={{ color: '#1976d2', textDecoration: 'none', fontWeight: 600 }}>Call Us</a>
-            </span>
-            {' '}or{' '}
-            <span style={{ display: 'inline-flex', alignItems: 'center', gap: 8 }}>
-              <WhatsAppIcon color="success" sx={{ mr: 1 }} />
-              <a href="https://wa.me/919542220772" target="_blank" rel="noopener noreferrer" style={{ color: '#25D366', textDecoration: 'none', fontWeight: 600 }}>WhatsApp Us</a>
-            </span>
-            <br />Affordable & Trusted by locals.
+  const sectionWrapper = {
+    maxWidth: '650px',
+    margin: '0 auto 32px auto',
+  };
+
+  const cardStyle = {
+    backgroundColor: theme.card,
+    borderRadius: '24px',
+    padding: '32px',
+    border: `1px solid ${theme.border}`,
+    boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.05)',
+  };
+
+  const iconCircle = (bg) => ({
+    width: '56px',
+    height: '56px',
+    borderRadius: '16px',
+    background: bg,
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    color: 'white',
+    fontSize: '1.5rem',
+    mb: 2
+  });
+
+  return (
+    <Box sx={{ backgroundColor: theme.bg, minHeight: '100vh', py: 8, px: 2 }}>
+      
+      {/* 1. HEADER & INTRO */}
+      <Box sx={{ textAlign: 'center', mb: 6, maxWidth: 650, mx: 'auto' }}>
+        <Box sx={{ 
+          display: 'inline-flex', 
+          alignItems: 'center', 
+          gap: 1, 
+          px: 2, 
+          py: 0.5, 
+          borderRadius: '100px', 
+          backgroundColor: '#dbeafe', 
+          color: theme.accent,
+          mb: 2
+        }}>
+          <HistoryEdu sx={{ fontSize: 14 }} />
+          <Typography variant="caption" sx={{ fontWeight: 700, letterSpacing: 1, textTransform: 'uppercase' }}>
+            Our Story
           </Typography>
         </Box>
+        <Typography variant="h3" sx={{ fontWeight: 800, color: theme.primary, mb: 1, letterSpacing: '-0.02em' }}>
+          Bengaluru Repair Services
+        </Typography>
+        <Typography sx={{ color: theme.textMuted, fontSize: '1.1rem' }}>
+          Providing reliable home appliance solutions across Bengaluru for over 5 years.
+        </Typography>
       </Box>
-    </>
+
+      {/* 2. THE MISSION CARD */}
+      <Box sx={sectionWrapper}>
+        <Box sx={cardStyle}>
+          <Box sx={iconCircle(theme.accent)}><Engineering /></Box>
+          <Typography variant="h5" sx={{ fontWeight: 700, color: theme.primary, mb: 2 }}>
+            Expertise You Can Trust
+          </Typography>
+          <Typography variant="body1" sx={{ color: theme.textMain, lineHeight: 1.8, mb: 2 }}>
+            We started with a simple mission: to eliminate the stress of appliance breakdowns for Bengaluru residents. 
+            Today, we are a leading independent service provider for <strong>Washing Machines, ACs, Refrigerators, and more</strong>.
+          </Typography>
+          <Box sx={{ display: 'flex', gap: 4, mt: 3 }}>
+            <Box>
+              <Typography variant="h4" sx={{ fontWeight: 800, color: theme.accent }}>5+</Typography>
+              <Typography variant="caption" sx={{ color: theme.textMuted, textTransform: 'uppercase', fontWeight: 700 }}>Years Exp</Typography>
+            </Box>
+            <Box>
+              <Typography variant="h4" sx={{ fontWeight: 800, color: theme.success }}>1000+</Typography>
+              <Typography variant="caption" sx={{ color: theme.textMuted, textTransform: 'uppercase', fontWeight: 700 }}>Repairs Done</Typography>
+            </Box>
+          </Box>
+        </Box>
+      </Box>
+
+      {/* 3. WHY CHOOSE US (UX: The List Flow) */}
+      <Box sx={sectionWrapper}>
+        <Box sx={cardStyle}>
+          <Typography variant="h6" sx={{ fontWeight: 700, color: theme.primary, mb: 3, display: 'flex', alignItems: 'center', gap: 1 }}>
+            <WorkspacePremium sx={{ color: theme.accent }} /> Why Choose Our Service?
+          </Typography>
+          
+          <List disablePadding>
+            {[
+              { title: 'Verified Technicians', desc: 'Experienced & background-checked professionals.' },
+              { title: 'Genuine Parts', desc: 'We only use quality, compatible, and tested components.' },
+              { title: 'Transparent Pricing', desc: 'Honest ₹199 inspection with no hidden fees.' },
+              { title: 'Same-Day Support', desc: 'Quick doorstep visits across all Bengaluru localities.' }
+            ].map((item, i) => (
+              <React.Fragment key={i}>
+                <ListItem sx={{ px: 0, py: 2, alignItems: 'flex-start', gap: 2 }}>
+                  <CheckCircle sx={{ color: theme.success, mt: 0.5 }} />
+                  <Box>
+                    <Typography sx={{ fontWeight: 700, color: theme.textMain }}>{item.title}</Typography>
+                    <Typography variant="body2" sx={{ color: theme.textMuted }}>{item.desc}</Typography>
+                  </Box>
+                </ListItem>
+                {i !== 3 && <Divider sx={{ opacity: 0.5 }} />}
+              </React.Fragment>
+            ))}
+          </List>
+        </Box>
+      </Box>
+
+      {/* 4. SERVICE AREA & CTA */}
+      <Box sx={sectionWrapper}>
+        <Box sx={{ ...cardStyle, background: `linear-gradient(135deg, ${theme.primary} 0%, #1e293b 100%)`, color: 'white', textAlign: 'center' }}>
+          <LocationOn sx={{ fontSize: 40, mb: 1, opacity: 0.8 }} />
+          <Typography variant="h6" sx={{ fontWeight: 700, mb: 1 }}>Service Area</Typography>
+          <Typography variant="body2" sx={{ opacity: 0.8, mb: 3 }}>
+            We serve the entire Bengaluru city and surrounding nearby localities.
+          </Typography>
+          
+          <Divider sx={{ backgroundColor: 'rgba(255,255,255,0.1)', mb: 3 }} />
+          
+          <Typography variant="subtitle1" sx={{ fontWeight: 700, mb: 2 }}>Ready to book a technician?</Typography>
+          
+          <Box sx={{ display: 'flex', justifyContent: 'center', gap: 2, flexWrap: 'wrap' }}>
+            <Box 
+              component="a" 
+              href="tel:+919542220772"
+              sx={{ 
+                display: 'flex', alignItems: 'center', gap: 1, px: 3, py: 1.5, 
+                borderRadius: '12px', backgroundColor: theme.accent, color: 'white', 
+                textDecoration: 'none', fontWeight: 700, transition: '0.2s',
+                '&:hover': { backgroundColor: '#1d4ed8' }
+              }}
+            >
+              <Call fontSize="small" /> Call Now
+            </Box>
+            <Box 
+              component="a" 
+              href="https://wa.me/919542220772"
+              sx={{ 
+                display: 'flex', alignItems: 'center', gap: 1, px: 3, py: 1.5, 
+                borderRadius: '12px', backgroundColor: theme.success, color: 'white', 
+                textDecoration: 'none', fontWeight: 700, transition: '0.2s',
+                '&:hover': { backgroundColor: '#047857' }
+              }}
+            >
+              <WhatsApp fontSize="small" /> WhatsApp
+            </Box>
+          </Box>
+        </Box>
+      </Box>
+
+      {/* 5. FINAL TRUST BADGE */}
+      <Box sx={{ textAlign: 'center', mt: 4 }}>
+        <Typography variant="caption" sx={{ color: theme.textMuted, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 1 }}>
+          <Verified sx={{ fontSize: 16 }} /> Trusted by 1000+ Households in Bengaluru
+        </Typography>
+      </Box>
+
+    </Box>
   );
 };
 
-export default AboutPage; 
+export default AboutPage;

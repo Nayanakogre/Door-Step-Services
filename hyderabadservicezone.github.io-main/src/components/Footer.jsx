@@ -15,10 +15,10 @@ const Footer = () => {
             className="footer-logo" 
           />
           <p className="footer-description">
-          Hyderabad Service Zone is an independent appliance repair service provider. We are not affiliated with or authorized by any specific brand or company. We offer trusted doorstep repair for washing machines, refrigerators, ACs, microwave ovens, dishwashers, and more in Hyderabad. All brand names are used for identification purposes only.
+      Bengaluru Repair Service is a trusted appliance repair provider in Bengaluru. We are independent and not affiliated with any specific brand or company. Our expert technicians offer reliable doorstep repairs for refrigerators, air conditioners, and washing machines. All brand names are used solely for identification purposes.
           </p>
           <div className="social-icons">
-            <a href="mailto:hyderabadservicezone@gmail.com" title="Email">
+            <a href="mailto:bengalururepairservices@gmail.com" title="Email">
               <FaEnvelope />
             </a>
             <a href="https://www.instagram.com/hyderabadservicezone/" title="Instagram">
@@ -60,17 +60,17 @@ const Footer = () => {
         <div className="footer-column contact-section">
           <h4>Contact Us</h4>
           <p>Address: Door No : 5-16/46, Ganesh Nagar, Ameenpur, Bachupally, Hyderabad, Telangana 500049</p>
-          <p className="flex items-center gap-2">
+          <p className="contact-info">
             <FaPhoneAlt /> +91 9542220772
           </p>
-          <p className="flex items-center gap-2">
-            <FaGlobe /> www.HyderabadServiceZone.com
+          <p className="contact-info">
+            <FaGlobe /> www.bengalururepairservices.com
           </p>
           <iframe 
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3942109.4269285207!2d75.22163035783817!3d15.228687635000588!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb8d9c9cab2771%3A0x4e839c133d43853d!2s5-16%2F46%2C%20Ganesh%20Nagar%2C%20Ameenpur%2C%20Bachupally%2C%20Hyderabad%2C%20Telangana%20500049!5e0!3m2!1sen!2sin!4v1751397894509!5m2!1sen!2sin" 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3889.528420109081!2d77.59053541526154!3d12.976230590911917!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae1670c5c9ef87%3A0x123456789abcdef!2sMG+Road%2C+Bengaluru%2C+Karnataka+560001!5e0!3m2!1sen!2sin!4v1751397894509!5m2!1sen!2sin"
             width="100%" 
             height="150" 
-            style={{ border: 0 }} 
+            style={{ border: 0, borderRadius: '12px', marginTop: '10px' }} 
             allowFullScreen 
             loading="lazy"
             title="Hyderabad Service Zone Location"
@@ -82,10 +82,10 @@ const Footer = () => {
       <div className="footer-disclaimer">
         <h5>Disclaimer</h5>
         <p>
-          We are an independent home appliance repair service provider and are not affiliated with or authorized by any specific brand. All brand names, logos, and trademarks used on this website are for identification purposes only and remain the property of their respective owners. We do not claim any official association, authorization, or endorsement from any manufacturer.
+         We are an independent appliance repair service and not affiliated with any brand. All brand names and logos are for reference only and belong to their owners.
         </p>
         <div className="footer-bottom">
-          <p>© Copyright {new Date().getFullYear()}, <span>Hyderabad Service Zone</span>. All Rights Reserved.</p>
+          <p>© Copyright {new Date().getFullYear()}, <span>Bengaluru Repair Service</span>. All Rights Reserved.</p>
           <div>
             <Link to="/terms">Terms of Services</Link> |
             <Link to="/privacy">Privacy Policy</Link>

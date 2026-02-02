@@ -1,133 +1,175 @@
-import React from 'react';
-import { FaTools, FaCalendarAlt, FaMoneyBillWave, FaTimesCircle, FaCreditCard, FaShieldAlt, FaInfoCircle } from 'react-icons/fa';
+import React from "react";
+import { Box, Typography, List, ListItem, ListItemIcon, Divider } from "@mui/material";
+import {
+  FaTools,
+  FaCalendarAlt,
+  FaMoneyBillWave,
+  FaTimesCircle,
+  FaCreditCard,
+  FaShieldAlt,
+  FaInfoCircle,
+  FaCheckCircle,
+} from "react-icons/fa";
 
-const TermsPage = () => (
-  <div style={{ 
-    padding: '48px 16px', 
-    maxWidth: 900, 
-    margin: '0 auto',
-    fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
-    color: '#333'
-  }}>
-    <h1 style={{ 
-      color: '#2c3e50',
-      borderBottom: '2px solid #3498db',
-      paddingBottom: '12px',
-      marginBottom: '32px'
-    }}>
-      Terms & Conditions
-    </h1>
-    
-    <div style={{ 
-      backgroundColor: '#f8f9fa',
-      padding: '24px',
-      borderRadius: '8px',
-      marginBottom: '32px',
-      boxShadow: '0 2px 4px rgba(0,0,0,0.1)'
-    }}>
-      <p style={{ fontSize: '18px' }}>
-        Welcome to <strong> Hyderabad Service Zone</strong>. By booking our washing machine repair service, 
-        you agree to the following terms and conditions.
-      </p>
-    </div>
+const TermsPage = () => {
+  const theme = {
+    primary: "#0f172a", // Your Signature Deep Slate
+    accent: "#2563eb",  // Trust Blue
+    bg: "#f8fafc",
+    card: "#ffffff",
+    border: "#e2e8f0",
+    textMain: "#1e293b",
+    textMuted: "#64748b",
+  };
 
-    <div style={{ marginBottom: '40px' }}>
-      <h2 style={{ color: '#2980b9', display: 'flex', alignItems: 'center', gap: '10px' }}>
-        <FaTools /> Services Offered
-      </h2>
-      <ul style={{ lineHeight: '1.8', listStyleType: 'circle', paddingLeft: '20px' }}>
-        <li>Repair & maintenance of fully automatic and semi-automatic washing machines</li>
-        <li>Home visits by trained technicians</li>
-        <li>Use of genuine or compatible spare parts (as per availability)</li>
-      </ul>
-    </div>
+  const sectionWrapper = {
+    maxWidth: "650px",
+    margin: "0 auto 28px auto",
+  };
 
-    <div style={{ marginBottom: '40px' }}>
-      <h2 style={{ color: '#2980b9', display: 'flex', alignItems: 'center', gap: '10px' }}>
-        <FaCalendarAlt /> Booking & Confirmation
-      </h2>
-      <ul style={{ lineHeight: '1.8', listStyleType: 'circle', paddingLeft: '20px' }}>
-        <li>Book via phone or WhatsApp</li>
-        <li>We confirm the appointment before dispatching a technician</li>
-        <li>Inspection charges may apply</li>
-      </ul>
-    </div>
+  const cardStyle = {
+    backgroundColor: theme.card,
+    borderRadius: "24px",
+    padding: "32px",
+    border: `1px solid ${theme.border}`,
+    boxShadow: "0 4px 6px -1px rgba(0, 0, 0, 0.05)",
+  };
 
-    <div style={{ marginBottom: '40px' }}>
-      <h2 style={{ color: '#2980b9', display: 'flex', alignItems: 'center', gap: '10px' }}>
-        <FaMoneyBillWave /> Pricing
-      </h2>
-      <ul style={{ lineHeight: '1.8', listStyleType: 'circle', paddingLeft: '20px' }}>
-        <li>Prices vary based on the issue</li>
-        <li>Final service charges will be discussed before starting any repair</li>
-        <li>Final charges depend on issue type</li>
-        <li>Spare parts cost extra if needed</li>
-      </ul>
-    </div>
+  const iconCircle = (bg) => ({
+    width: "48px",
+    height: "48px",
+    borderRadius: "14px",
+    background: bg,
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    color: "white",
+    fontSize: "1.2rem",
+    flexShrink: 0,
+  });
 
-    <div style={{ marginBottom: '40px' }}>
-      <h2 style={{ color: '#2980b9', display: 'flex', alignItems: 'center', gap: '10px' }}>
-        <FaTimesCircle /> Cancellations
-      </h2>
-      <ul style={{ lineHeight: '1.8', listStyleType: 'circle', paddingLeft: '20px' }}>
-        <li>Cancel at least 1 hour before scheduled time</li>
-        <li>No cancellation charges if informed on time</li>
-      </ul>
-    </div>
+  const termList = (items) => (
+    <List disablePadding>
+      {items.map((text, i) => (
+        <ListItem key={i} sx={{ px: 0, alignItems: "flex-start", gap: 2, mb: 1 }}>
+          <FaCheckCircle style={{ color: "#10b981", marginTop: "5px", fontSize: "14px", flexShrink: 0 }} />
+          <Typography variant="body2" sx={{ color: theme.textMain, lineHeight: 1.6 }}>{text}</Typography>
+        </ListItem>
+      ))}
+    </List>
+  );
 
-    <div style={{ marginBottom: '40px' }}>
-      <h2 style={{ color: '#2980b9', display: 'flex', alignItems: 'center', gap: '10px' }}>
-        <FaCreditCard /> Payment
-      </h2>
-      <ul style={{ lineHeight: '1.8', listStyleType: 'circle', paddingLeft: '20px' }}>
-        <li>Accepted via Cash, UPI, Google Pay, PhonePe, or Paytm</li>
-      </ul>
-    </div>
+  return (
+    <Box sx={{ backgroundColor: theme.bg, minHeight: "100vh", py: 8, px: 2 }}>
+      
+      {/* 1. HEADER */}
+      <Box sx={{ textAlign: "center", mb: 6, maxWidth: 650, mx: "auto" }}>
+        <Box sx={{ 
+          display: "inline-flex", 
+          alignItems: "center", 
+          gap: 1, 
+          px: 2, 
+          py: 0.5, 
+          borderRadius: "100px", 
+          backgroundColor: "#dbeafe", 
+          color: theme.accent,
+          mb: 2
+        }}>
+          <FaShieldAlt fontSize="12px" />
+          <Typography variant="caption" sx={{ fontWeight: 700, letterSpacing: 1, textTransform: "uppercase" }}>
+            Legal Agreement
+          </Typography>
+        </Box>
+        <Typography variant="h3" sx={{ fontWeight: 800, color: theme.primary, mb: 1, letterSpacing: "-0.02em" }}>
+          Terms & Conditions
+        </Typography>
+        <Typography sx={{ color: theme.textMuted, fontSize: "1.1rem" }}>
+          Rules and guidelines for using Bengaluru Repair Services.
+        </Typography>
+      </Box>
 
-    <div style={{ marginBottom: '40px' }}>
-      <h2 style={{ color: '#2980b9', display: 'flex', alignItems: 'center', gap: '10px' }}>
-        <FaShieldAlt /> Liability
-      </h2>
-      <p style={{ lineHeight: '1.8' }}>
-        We are not responsible for pre-existing issues or damage due to misuse or manufacturer defects.
-      </p>
-    </div>
+      {/* 2. SERVICES & BOOKING */}
+      <Box sx={sectionWrapper}>
+        <Box sx={cardStyle}>
+          <Box sx={{ display: "flex", gap: 2, mb: 3 }}>
+            <Box sx={iconCircle(theme.accent)}><FaTools /></Box>
+            <Box>
+              <Typography variant="h6" sx={{ fontWeight: 700, color: theme.primary }}>Service & Booking</Typography>
+              <Typography variant="body2" sx={{ color: theme.textMuted }}>How we operate in Bengaluru.</Typography>
+            </Box>
+          </Box>
+          {termList([
+            "Doorstep repair for all major home appliances.",
+            "Service coverage is strictly limited to Bengaluru city limits.",
+            "Appointments are confirmed via phone or WhatsApp before dispatch.",
+            "Independent technicians carry out all maintenance work."
+          ])}
+        </Box>
+      </Box>
 
-    <div style={{ marginBottom: '40px' }}>
-      <h2 style={{ color: '#2980b9', display: 'flex', alignItems: 'center', gap: '10px' }}>
-        <FaInfoCircle /> Disclaimer
-      </h2>
-      <p style={{ lineHeight: '1.8' }}>
-        We are an independent home appliance repair service provider. We are not affiliated with or authorized by any specific brand.
-        All brand names, logos, and trademarks used are for identification purposes only and remain the property of their respective owners.
-      </p>
-    </div>
+      {/* 3. PAYMENTS & CANCELLATIONS */}
+      <Box sx={sectionWrapper}>
+        <Box sx={cardStyle}>
+          <Box sx={{ display: "flex", gap: 2, mb: 3 }}>
+            <Box sx={iconCircle("#10b981")}><FaMoneyBillWave /></Box>
+            <Box>
+              <Typography variant="h6" sx={{ fontWeight: 700, color: theme.primary }}>Payments & Fees</Typography>
+              <Typography variant="body2" sx={{ color: theme.textMuted }}>Pricing and cancellation policies.</Typography>
+            </Box>
+          </Box>
+          {termList([
+            "Inspection charges start from ₹199 (applicable if service is declined).",
+            "Spare parts are billed separately from labor charges.",
+            "Payments accepted via Cash, Google Pay, PhonePe, or UPI.",
+            "Cancellations must be made at least 1 hour before the scheduled visit."
+          ])}
+        </Box>
+      </Box>
 
-    <div style={{ 
-      backgroundColor: '#e8f4fc',
-      padding: '20px',
-      borderRadius: '8px',
-      borderLeft: '4px solid #3498db'
-    }}>
-      <p style={{ lineHeight: '1.8', margin: 0 }}>
-        <strong>Design & Icon Credits:</strong> Some icons used on this website are sourced from Flaticon under free license with attribution. 
-        Others are designed via Canva using free and Pro assets for commercial use. All images and icons are used solely for 
-        illustration and service explanation purposes.
-      </p>
-    </div>
+      {/* 4. LIABILITY & DISCLAIMER */}
+      <Box sx={sectionWrapper}>
+        <Box sx={cardStyle}>
+          <Box sx={{ display: "flex", gap: 2, mb: 3 }}>
+            <Box sx={iconCircle("#f59e0b")}><FaInfoCircle /></Box>
+            <Box>
+              <Typography variant="h6" sx={{ fontWeight: 700, color: theme.primary }}>Liability Notice</Typography>
+              <Typography variant="body2" sx={{ color: theme.textMuted }}>Legal boundaries and brand identity.</Typography>
+            </Box>
+          </Box>
+          <Typography variant="body2" sx={{ color: theme.textMain, lineHeight: 1.8, mb: 2 }}>
+            <strong>Bengaluru Repair Services</strong> is an independent service provider. We are <strong>not affiliated</strong> with any appliance manufacturer.
+          </Typography>
+          <Divider sx={{ mb: 2 }} />
+          <Typography variant="body2" sx={{ color: theme.textMuted, fontStyle: "italic", lineHeight: 1.6 }}>
+            We are not responsible for pre-existing damages, manufacturer defects, or electrical surge issues. All brand names used are for identification purposes only.
+          </Typography>
+        </Box>
+      </Box>
 
-    <div style={{ 
-      marginTop: '40px',
-      padding: '20px',
-      backgroundColor: '#f5f5f5',
-      borderRadius: '8px',
-      textAlign: 'center'
-    }}>
-      <p style={{ fontWeight: 'bold', margin: 0 }}>
-        By booking our service, you agree to our Terms & Conditions and Privacy Policy.
-      </p>
-    </div>
-  </div>
-);
+      {/* 5. ACCEPTANCE CARD */}
+      <Box sx={sectionWrapper}>
+        <Box sx={{ 
+          ...cardStyle, 
+          background: `linear-gradient(135deg, ${theme.primary} 0%, #1e293b 100%)`, 
+          color: "white", 
+          textAlign: "center" 
+        }}>
+          <Typography variant="body1" sx={{ fontWeight: 600, mb: 1 }}>
+            Agreement Confirmation
+          </Typography>
+          <Typography variant="body2" sx={{ opacity: 0.8 }}>
+            By booking our service, you confirm that you have read and agreed to these Terms & Conditions.
+          </Typography>
+        </Box>
+      </Box>
+
+      {/* FOOTER */}
+      <Typography variant="caption" sx={{ display: "block", textAlign: "center", mt: 4, color: theme.textMuted }}>
+        Last Updated: {new Date().toLocaleDateString('en-IN', { month: 'long', year: 'numeric' })}
+      </Typography>
+
+    </Box>
+  );
+};
 
 export default TermsPage;

@@ -31,7 +31,7 @@ import ContactPage from './pages/ContactPage';
 import AboutPage from './pages/AboutPage';
 import ServicePage from './pages/ServicePage';
 
-// Layout wrapper
+// Layout wrapper (Header + Footer)
 const MainLayout = ({ children }) => (
   <>
     <Header />
@@ -46,6 +46,7 @@ function App() {
       <ScrollToTop />
       <div className="App">
         <Routes>
+
           {/* Homepage */}
           <Route
             path="/"
@@ -63,9 +64,24 @@ function App() {
             }
           />
 
-          {/* Standalone pages without layout */}
-          <Route path="/terms" element={<TermsPage />} />
-          <Route path="/privacy" element={<PrivacyPage />} />
+          {/* Privacy & Terms (NOW WITH HEADER + FOOTER) */}
+          <Route
+            path="/privacy"
+            element={
+              <MainLayout>
+                <PrivacyPage />
+              </MainLayout>
+            }
+          />
+
+          <Route
+            path="/terms"
+            element={
+              <MainLayout>
+                <TermsPage />
+              </MainLayout>
+            }
+          />
 
           {/* Service Page */}
           <Route
@@ -80,16 +96,17 @@ function App() {
             }
           />
 
-          {/* Other content pages with layout */}
+          {/* Other content pages */}
           <Route path="/faqs" element={<MainLayout><FaqsPage /></MainLayout>} />
           <Route path="/disclaimer" element={<MainLayout><DisclaimerPage /></MainLayout>} />
           <Route path="/pricing" element={<MainLayout><PricingPage /></MainLayout>} />
           <Route path="/warranty" element={<MainLayout><WarrantyPage /></MainLayout>} />
           <Route path="/contact" element={<MainLayout><ContactPage /></MainLayout>} />
           <Route path="/about" element={<MainLayout><AboutPage /></MainLayout>} />
+
         </Routes>
 
-        {/* WhatsApp floating icon (visible on all routes) */}
+        {/* Floating components – visible on all pages */}
         <FloatingWhatsApp />
         <FloatingPhone />
         <MobileCallBar />

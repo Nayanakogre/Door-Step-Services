@@ -109,8 +109,8 @@ const TestimonialsSection = () => {
                 borderRadius: '2px'
               }
             }}
-          >
-            What Our Customers Say
+          >Our Happy Customers
+            
           </Typography>
           <Typography 
             variant="subtitle1"

@@ -1,8 +1,15 @@
 {
-  "build": {
-    "nodeVersion": "18.x"
-  },
   "rewrites": [
-    { "source": "/(.*)", "destination": "/" }
+    { "source": "/(.*)", "destination": "/index.html" }
+  ],
+  "builds": [
+    {
+      "src": "build/index.html",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "build/static/**",
+      "use": "@vercel/static"
+    }
   ]
 }

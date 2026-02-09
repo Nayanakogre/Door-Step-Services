@@ -1,29 +1,33 @@
 import React from 'react';
 import './ServicesSection.css';
 import { Link } from 'react-router-dom';
+import { GiWashingMachine } from 'react-icons/gi';
+import { TbAirConditioning } from 'react-icons/tb';
+import { BsSnow } from 'react-icons/bs';
 
 const services = [
   {
     id: 1,
-    icon: "🌀",
+    icon: <GiWashingMachine />,
     title: "Washing Machine Repair",
     description: "Expert repair for all brands of washing machines. Same-day doorstep service with genuine parts and professional technicians.",
     route: "/service/washing-machine"
   },
   {
     id: 2,
-    icon: "❄️",
+    icon: <TbAirConditioning />,
     title: "AC Repair & Service",
     description: "Complete AC repair, installation, and maintenance services. Gas filling, cleaning, and all AC related issues solved.",
     route: "/service/ac"
   },
   {
     id: 3,
-    icon: "🧊",
+    icon: <BsSnow />,
     title: "Refrigerator Repair",
     description: "Professional fridge repair services. Cooling issues, compressor problems, and all refrigerator repairs handled.",
     route: "/service/refrigerator"
   },
+  /*
   {
     id: 4,
     icon: "🔥",
@@ -45,15 +49,16 @@ const services = [
     description: "Air cooler repair and maintenance services. Pump issues, cooling problems, and general servicing.",
     route: "/service/air-cooler"
   }
+  */
 ];
 
 const ServicesSection = () => {
- 
   return (
     <section id="services" className="services-section">
       <div className="services-floating-box">
         <h2 className="services-title">Our Services</h2>
         <div className="services-divider"></div>
+
         <div className="services-list">
           {services.map((service) => (
             <Link
@@ -63,8 +68,9 @@ const ServicesSection = () => {
               tabIndex={0}
               aria-label={service.title}
             >
-              <span className="service-icon" aria-hidden="true">{service.icon}</span>
+              <span className="service-icon">{service.icon}</span>
               <h3 className="service-name">{service.title}</h3>
+              <p className="service-desc">{service.description}</p>
             </Link>
           ))}
         </div>

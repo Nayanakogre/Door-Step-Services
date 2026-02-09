@@ -57,7 +57,7 @@ function App() {
                 <AboutSection />
                 <WhyChooseUsSection />
                 <FAQSection />
-                <ServiceAreasSection />
+                {/* <ServiceAreasSection /> */}
                 <TestimonialsSection />
                 <ContactSection />
               </MainLayout>

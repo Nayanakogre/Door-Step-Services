@@ -1,173 +1,238 @@
 import React from "react";
-import { Box, Typography, List, ListItem, ListItemIcon, Divider } from "@mui/material";
-import {
-  FaTools,
-  FaCalendarAlt,
-  FaMoneyBillWave,
-  FaTimesCircle,
-  FaCreditCard,
-  FaShieldAlt,
-  FaInfoCircle,
-  FaCheckCircle,
-} from "react-icons/fa";
+import { Box, Typography, Divider, Paper, Container, Grid } from "@mui/material";
+import { FaTools, FaMoneyBillWave, FaInfoCircle, FaCheckCircle } from "react-icons/fa";
 
 const TermsPage = () => {
-  const theme = {
-    primary: "#0f172a", // Your Signature Deep Slate
-    accent: "#2563eb",  // Trust Blue
-    bg: "#f8fafc",
-    card: "#ffffff",
-    border: "#e2e8f0",
+  const themeColors = {
+    primaryGradient: "linear-gradient(135deg, #2563eb, #1d4ed8, #0ea5e9)",
+    cardBg: "#ffffff",
+    cardBorder: "#e2e8f0",
     textMain: "#1e293b",
     textMuted: "#64748b",
+    success: "#10b981",
   };
 
-  const sectionWrapper = {
-    maxWidth: "650px",
-    margin: "0 auto 28px auto",
+  /* ---------- MICRO CARD ---------- */
+  const microCardStyle = {
+    flex: 1,
+    padding: "26px",
+    borderRadius: "18px",
+    background: themeColors.cardBg,
+    border: `1px solid ${themeColors.cardBorder}`,
+    transition: "all 0.35s ease",
+    textAlign: "center",
+    "&:hover": {
+      transform: "translateY(-8px)",
+      boxShadow: "0 14px 30px rgba(0,0,0,0.08)",
+      borderColor: "#60a5fa",
+    },
   };
 
-  const cardStyle = {
-    backgroundColor: theme.card,
-    borderRadius: "24px",
-    padding: "32px",
-    border: `1px solid ${theme.border}`,
-    boxShadow: "0 4px 6px -1px rgba(0, 0, 0, 0.05)",
-  };
-
-  const iconCircle = (bg) => ({
-    width: "48px",
-    height: "48px",
+  /* ---------- ICON BADGE ---------- */
+  const iconBadge = {
+    width: 52,
+    height: 52,
     borderRadius: "14px",
-    background: bg,
+    background: themeColors.primaryGradient,
     display: "flex",
-    justifyContent: "center",
     alignItems: "center",
-    color: "white",
-    fontSize: "1.2rem",
-    flexShrink: 0,
-  });
+    justifyContent: "center",
+    margin: "0 auto 14px auto",
+    color: "#fff",
+    fontSize: "1.3rem",
+    boxShadow: "0 6px 14px rgba(37,99,235,0.35)",
+  };
 
-  const termList = (items) => (
-    <List disablePadding>
+  /* ---------- GRID (4 IN SINGLE ROW) ---------- */
+  const TermGrid = ({ items }) => (
+    <Grid container spacing={3}>
       {items.map((text, i) => (
-        <ListItem key={i} sx={{ px: 0, alignItems: "flex-start", gap: 2, mb: 1 }}>
-          <FaCheckCircle style={{ color: "#10b981", marginTop: "5px", fontSize: "14px", flexShrink: 0 }} />
-          <Typography variant="body2" sx={{ color: theme.textMain, lineHeight: 1.6 }}>{text}</Typography>
-        </ListItem>
+        <Grid item xs={12} sm={6} md={3} key={i}>
+          <Paper elevation={3} sx={microCardStyle}>
+            <Box sx={iconBadge}>
+              <FaCheckCircle />
+            </Box>
+            <Typography
+              variant="body2"
+              sx={{
+                color: themeColors.textMain,
+                lineHeight: 1.7,
+                fontWeight: 500,
+                fontSize: "0.96rem",
+              }}
+            >
+              {text}
+            </Typography>
+          </Paper>
+        </Grid>
       ))}
-    </List>
+    </Grid>
   );
 
   return (
-    <Box sx={{ backgroundColor: theme.bg, minHeight: "100vh", py: 8, px: 2 }}>
-      
-      {/* 1. HEADER */}
-      <Box sx={{ textAlign: "center", mb: 6, maxWidth: 650, mx: "auto" }}>
-        <Box sx={{ 
-          display: "inline-flex", 
-          alignItems: "center", 
-          gap: 1, 
-          px: 2, 
-          py: 0.5, 
-          borderRadius: "100px", 
-          backgroundColor: "#dbeafe", 
-          color: theme.accent,
-          mb: 2
-        }}>
-          <FaShieldAlt fontSize="12px" />
-          <Typography variant="caption" sx={{ fontWeight: 700, letterSpacing: 1, textTransform: "uppercase" }}>
-            Legal Agreement
+    <Box
+      sx={{
+        minHeight: "100vh",
+        py: 10,
+        px: 2,
+        background: "linear-gradient(180deg, rgb(43, 62, 205) 0%, #030c50 50%, #223fc2 100%)",
+        color: "#fff",
+      }}
+    >
+      <Container maxWidth="lg">
+        {/* HEADER */}
+        <Box sx={{ textAlign: "center", mb: 10, position: "relative" }}>
+          <Box
+            sx={{
+              position: "absolute",
+              top: "-50px",
+              left: "50%",
+              transform: "translateX(-50%)",
+              width: "280px",
+              height: "280px",
+              background: "radial-gradient(circle, rgba(37,99,235,0.18) 0%, rgba(37,99,235,0) 70%)",
+              zIndex: 0,
+            }}
+          />
+          <Typography
+  variant="h2"
+  sx={{
+    fontWeight: 900,
+    fontSize: { xs: "2.3rem", md: "3.2rem" },
+    color: "#ffffff",           // <-- Changed to white
+    letterSpacing: "-0.04em",
+    mb: 2,
+    position: "relative",
+    zIndex: 1,
+  }}
+>
+  Terms & Conditions
+</Typography>
+
+          <Box
+            sx={{
+              width: "130px",
+              height: "6px",
+              margin: "0 auto",
+              borderRadius: "30px",
+              background: themeColors.primaryGradient,
+              boxShadow: "0 4px 14px rgba(37,99,235,0.4)",
+              mb: 3,
+            }}
+          />
+          <Typography
+            sx={{
+              maxWidth: "640px",
+              margin: "0 auto",
+              lineHeight: 1.7,
+              color: "#cbd5e1",
+              fontSize: "1.1rem",
+            }}
+          >
+            Please read our service policies carefully before booking. These terms ensure transparent pricing, professional conduct, and customer trust at every step.
           </Typography>
         </Box>
-        <Typography variant="h3" sx={{ fontWeight: 800, color: theme.primary, mb: 1, letterSpacing: "-0.02em" }}>
-          Terms & Conditions
-        </Typography>
-        <Typography sx={{ color: theme.textMuted, fontSize: "1.1rem" }}>
-          Rules and guidelines for using Bengaluru Repair Services.
-        </Typography>
-      </Box>
 
-      {/* 2. SERVICES & BOOKING */}
-      <Box sx={sectionWrapper}>
-        <Box sx={cardStyle}>
-          <Box sx={{ display: "flex", gap: 2, mb: 3 }}>
-            <Box sx={iconCircle(theme.accent)}><FaTools /></Box>
-            <Box>
-              <Typography variant="h6" sx={{ fontWeight: 700, color: theme.primary }}>Service & Booking</Typography>
-              <Typography variant="body2" sx={{ color: theme.textMuted }}>How we operate in Bengaluru.</Typography>
+        {/* SERVICE & BOOKING */}
+        <Box sx={{ mb: 8 }}>
+          <Paper
+            sx={{
+              background: "#ffffff",
+              color: "#1e293b",
+              p: 4,
+              borderRadius: 4,
+              boxShadow: "0 10px 30px rgba(0,0,0,0.1)",
+            }}
+          >
+            <Box sx={{ display: "flex", alignItems: "center", gap: 2, mb: 4 }}>
+              <Box sx={{ color: "#2563eb", fontSize: "1.8rem" }}>
+                <FaTools />
+              </Box>
+              <Typography variant="h5" fontWeight={800}>
+                Service & Booking
+              </Typography>
             </Box>
-          </Box>
-          {termList([
-            "Doorstep repair for all major home appliances.",
-            "Service coverage is strictly limited to Bengaluru city limits.",
-            "Appointments are confirmed via phone or WhatsApp before dispatch.",
-            "Independent technicians carry out all maintenance work."
-          ])}
+            <TermGrid
+              items={[
+                "Doorstep repair for all major home appliances.",
+                "Services available only within Bengaluru city.",
+                "Appointments confirmed via phone or WhatsApp.",
+                "Independent verified technicians handle repairs.",
+              ]}
+            />
+          </Paper>
         </Box>
-      </Box>
 
-      {/* 3. PAYMENTS & CANCELLATIONS */}
-      <Box sx={sectionWrapper}>
-        <Box sx={cardStyle}>
-          <Box sx={{ display: "flex", gap: 2, mb: 3 }}>
-            <Box sx={iconCircle("#10b981")}><FaMoneyBillWave /></Box>
-            <Box>
-              <Typography variant="h6" sx={{ fontWeight: 700, color: theme.primary }}>Payments & Fees</Typography>
-              <Typography variant="body2" sx={{ color: theme.textMuted }}>Pricing and cancellation policies.</Typography>
+        {/* PAYMENTS & FEES */}
+        <Box sx={{ mb: 8 }}>
+          <Paper
+            sx={{
+              background: "#ffffff",
+              color: "#1e293b",
+              p: 4,
+              borderRadius: 4,
+              boxShadow: "0 10px 30px rgba(0,0,0,0.1)",
+            }}
+          >
+            <Box sx={{ display: "flex", alignItems: "center", gap: 2, mb: 4 }}>
+              <Box sx={{ color: "#10b981", fontSize: "1.8rem" }}>
+                <FaMoneyBillWave />
+              </Box>
+              <Typography variant="h5" fontWeight={800}>
+                Payments & Fees
+              </Typography>
             </Box>
-          </Box>
-          {termList([
-            "Inspection charges start from ₹199 (applicable if service is declined).",
-            "Spare parts are billed separately from labor charges.",
-            "Payments accepted via Cash, Google Pay, PhonePe, or UPI.",
-            "Cancellations must be made at least 1 hour before the scheduled visit."
-          ])}
+            <TermGrid
+              items={[
+                "Inspection charges ₹199 if service is declined.",
+                "Spare parts billed separately from labor.",
+                "Payments via Cash, UPI, Google Pay, PhonePe.",
+                "Cancel at least 1 hour before visit.",
+              ]}
+            />
+          </Paper>
         </Box>
-      </Box>
 
-      {/* 4. LIABILITY & DISCLAIMER */}
-      <Box sx={sectionWrapper}>
-        <Box sx={cardStyle}>
-          <Box sx={{ display: "flex", gap: 2, mb: 3 }}>
-            <Box sx={iconCircle("#f59e0b")}><FaInfoCircle /></Box>
-            <Box>
-              <Typography variant="h6" sx={{ fontWeight: 700, color: theme.primary }}>Liability Notice</Typography>
-              <Typography variant="body2" sx={{ color: theme.textMuted }}>Legal boundaries and brand identity.</Typography>
+        {/* LIABILITY */}
+        <Box sx={{ mb: 8 }}>
+          <Paper
+            sx={{
+              background: "#ffffff",
+              color: "#1e293b",
+              p: 4,
+              borderRadius: 4,
+              boxShadow: "0 10px 30px rgba(0,0,0,0.1)",
+            }}
+          >
+            <Box sx={{ display: "flex", alignItems: "center", gap: 2, mb: 3 }}>
+              <Box sx={{ color: "#f59e0b", fontSize: "1.8rem" }}>
+                <FaInfoCircle />
+              </Box>
+              <Typography variant="h5" fontWeight={800}>
+                Liability & Identity
+              </Typography>
             </Box>
-          </Box>
-          <Typography variant="body2" sx={{ color: theme.textMain, lineHeight: 1.8, mb: 2 }}>
-            <strong>Bengaluru Repair Services</strong> is an independent service provider. We are <strong>not affiliated</strong> with any appliance manufacturer.
-          </Typography>
-          <Divider sx={{ mb: 2 }} />
-          <Typography variant="body2" sx={{ color: theme.textMuted, fontStyle: "italic", lineHeight: 1.6 }}>
-            We are not responsible for pre-existing damages, manufacturer defects, or electrical surge issues. All brand names used are for identification purposes only.
+            <Typography sx={{ mb: 2, fontWeight: 500, lineHeight: 1.8 }}>
+              Bengaluru Repair Services is an independent appliance repair provider and is not affiliated with any appliance brand. Logos are used strictly for identification purposes.
+            </Typography>
+            <Divider sx={{ my: 2 }} />
+            <Typography sx={{ fontStyle: "italic", color: "#64748b" }}>
+              We are not responsible for pre-existing damage, manufacturer defects, or electrical surge issues.
+            </Typography>
+          </Paper>
+        </Box>
+
+        {/* FOOTER NOTE */}
+        <Box sx={{ textAlign: "center", mt: 10, pt: 4, borderTop: "1px solid rgba(255,255,255,0.2)" }}>
+          <Typography sx={{ color: "#cbd5e1" }} variant="caption">
+            Last Updated:{" "}
+            {new Date().toLocaleDateString("en-IN", {
+              month: "long",
+              year: "numeric",
+            })}
           </Typography>
         </Box>
-      </Box>
-
-      {/* 5. ACCEPTANCE CARD */}
-      <Box sx={sectionWrapper}>
-        <Box sx={{ 
-          ...cardStyle, 
-          background: `linear-gradient(135deg, ${theme.primary} 0%, #1e293b 100%)`, 
-          color: "white", 
-          textAlign: "center" 
-        }}>
-          <Typography variant="body1" sx={{ fontWeight: 600, mb: 1 }}>
-            Agreement Confirmation
-          </Typography>
-          <Typography variant="body2" sx={{ opacity: 0.8 }}>
-            By booking our service, you confirm that you have read and agreed to these Terms & Conditions.
-          </Typography>
-        </Box>
-      </Box>
-
-      {/* FOOTER */}
-      <Typography variant="caption" sx={{ display: "block", textAlign: "center", mt: 4, color: theme.textMuted }}>
-        Last Updated: {new Date().toLocaleDateString('en-IN', { month: 'long', year: 'numeric' })}
-      </Typography>
-
+      </Container>
     </Box>
   );
 };

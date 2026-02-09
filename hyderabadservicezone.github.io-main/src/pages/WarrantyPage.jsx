@@ -1,177 +1,214 @@
-import React from 'react';
-import { 
-  Box, 
-  Typography, 
-  List, 
-  ListItem, 
-  ListItemIcon 
-} from '@mui/material';
-import { 
-  FaCheckCircle, 
-  FaTimesCircle, 
-  FaPhoneAlt, 
+import React from "react";
+import { Box, Typography, Container, Grid, Paper } from "@mui/material";
+import {
+  FaCheckCircle,
+  FaTimesCircle,
+  FaPhoneAlt,
   FaEnvelope,
   FaTools,
-  FaShieldAlt,
   FaExclamationTriangle,
-  FaInfoCircle
-} from 'react-icons/fa';
+  FaInfoCircle,
+} from "react-icons/fa";
 
 const WarrantyPage = () => {
   const theme = {
-    primary: '#0f172a', // Deep Slate
-    accent: '#2563eb',  // Trust Blue
-    bg: '#f8fafc',
-    card: '#ffffff',
-    border: '#e2e8f0',
-    textMain: '#1e293b',
-    textMuted: '#64748b',
-    success: '#059669',
-    error: '#dc2626'
+    primary: "#ffffff", // headings white
+    accent: "#2563eb",
+    bg: "linear-gradient(0deg, rgb(43, 62, 205) 0%, #030c50 50%, #223fc2 100%)",
+    card: "#ffffff",
+    border: "#e2e8f0",
+    textMain: "#1f2937",
+    textMuted: "#cbd5e1",
+    success: "#10b981",
+    error: "#ef4444",
   };
 
-  const sectionWrapper = {
-    maxWidth: '650px',
-    margin: '0 auto 28px auto',
-  };
+  const sectionWrapper = { maxWidth: "1200px", margin: "0 auto 60px auto" };
 
-  const cardStyle = {
+  const mainCard = {
     backgroundColor: theme.card,
-    borderRadius: '24px',
-    padding: '32px',
+    borderRadius: "26px",
+    padding: "36px",
     border: `1px solid ${theme.border}`,
-    boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.05)',
+    boxShadow: "0 10px 30px rgba(0,0,0,0.05)",
   };
 
-  const iconCircle = (bg) => ({
-    width: '48px',
-    height: '48px',
-    borderRadius: '14px',
-    background: bg,
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    color: 'white',
-    fontSize: '1.2rem',
-    flexShrink: 0,
+  const iconBadge = (gradient) => ({
+    width: 52,
+    height: 52,
+    borderRadius: "14px",
+    background: gradient,
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    color: "#fff",
+    fontSize: "1.3rem",
+    boxShadow: "0 6px 14px rgba(0,0,0,0.15)",
   });
 
   return (
-    <Box sx={{ backgroundColor: theme.bg, minHeight: '100vh', py: 8, px: 2 }}>
-      
-      {/* 1. HEADER */}
-      <Box sx={{ textAlign: 'center', mb: 6, maxWidth: 650, mx: 'auto' }}>
-        <Box sx={{ 
-          display: 'inline-flex', 
-          alignItems: 'center', 
-          gap: 1, 
-          px: 2, 
-          py: 0.5, 
-          borderRadius: '100px', 
-          backgroundColor: '#dbeafe', 
-          color: theme.accent,
-          mb: 2
-        }}>
-          <FaShieldAlt fontSize="14px" />
-          <Typography variant="caption" sx={{ fontWeight: 700, letterSpacing: 1, textTransform: 'uppercase' }}>
-            Service Protection
+    <Box sx={{ background: theme.bg, minHeight: "100vh", py: 10, px: 2 }}>
+      <Container>
+
+        {/* ================= HEADER ================= */}
+        <Box sx={{ textAlign: "center", mb: 10, position: "relative" }}>
+          <Box sx={{
+            position: "absolute",
+            top: "-50px",
+            left: "50%",
+            transform: "translateX(-50%)",
+            width: "280px",
+            height: "280px",
+            background: "radial-gradient(circle, rgba(37,99,235,0.18) 0%, rgba(37,99,235,0) 70%)",
+            zIndex: 0,
+          }}/>
+          <Typography
+            variant="h2"
+            sx={{
+              fontWeight: 900,
+              fontSize: { xs: "2.3rem", md: "3.2rem" },
+              color: theme.primary,
+              letterSpacing: "-0.04em",
+              position: "relative",
+              zIndex: 1,
+              mb: 2,
+            }}
+          >
+            Warranty Policy
+          </Typography>
+          <Box sx={{
+            width: "130px",
+            height: "6px",
+            margin: "0 auto",
+            borderRadius: "30px",
+            background: theme.accent,
+            boxShadow: "0 4px 14px rgba(37,99,235,0.4)",
+            mb: 3,
+          }}/>
+          <Typography sx={{ color: theme.textMuted, fontSize: "1.1rem", maxWidth: "640px", margin: "0 auto", lineHeight: 1.7 }}>
+            Our commitment to quality repairs and reliable appliance service support.
           </Typography>
         </Box>
-        <Typography variant="h3" sx={{ fontWeight: 800, color: theme.primary, mb: 1, letterSpacing: '-0.02em' }}>
-          Warranty Policy
-        </Typography>
-        <Typography sx={{ color: theme.textMuted, fontSize: '1.1rem' }}>
-          Our commitment to quality and reliable appliance support.
-        </Typography>
-      </Box>
 
-      {/* 2. WHAT IS COVERED (Labor & Parts) */}
-      <Box sx={sectionWrapper}>
-        <Box sx={cardStyle}>
-          <Box sx={{ display: 'flex', gap: 2, mb: 3 }}>
-            <Box sx={iconCircle(theme.success)}><FaCheckCircle /></Box>
-            <Box>
-              <Typography variant="h6" sx={{ fontWeight: 700, color: theme.primary }}>What's Covered</Typography>
-              <Typography variant="body2" sx={{ color: theme.textMuted }}>Guaranteed repairs for your peace of mind.</Typography>
+        {/* ================= WHAT'S COVERED ================= */}
+        <Box sx={sectionWrapper}>
+          <Box sx={mainCard}>
+            <Box sx={{ display: "flex", alignItems: "center", gap: 2, mb: 4 }}>
+              <Box sx={iconBadge("linear-gradient(135deg,#10b981,#059669)")}>
+                <FaCheckCircle />
+              </Box>
+              <Typography variant="h5" sx={{ fontWeight: 800, color: theme.textMain }}>
+                What’s Covered
+              </Typography>
             </Box>
-          </Box>
-          
-          <Box sx={{ mb: 4 }}>
-            <Typography variant="subtitle2" sx={{ color: theme.accent, fontWeight: 700, mb: 1, display: 'flex', alignItems: 'center', gap: 1 }}>
-              <FaTools /> Labor Warranty
-            </Typography>
-            <Typography variant="body2" sx={{ color: theme.textMain, backgroundColor: '#f0fdf4', p: 2, borderRadius: '12px', border: '1px solid #bbf7d0' }}>
-              We provide a <strong>30-day limited warranty</strong> on repair labor. If the same issue reoccurs within 30 days, we fix it for free.
-            </Typography>
-          </Box>
 
-          <Box>
-            <Typography variant="subtitle2" sx={{ color: theme.accent, fontWeight: 700, mb: 1, display: 'flex', alignItems: 'center', gap: 1 }}>
-              <FaTools /> Spare Parts Warranty
-            </Typography>
-            <Typography variant="body2" sx={{ color: theme.textMain, backgroundColor: '#f0fdf4', p: 2, borderRadius: '12px', border: '1px solid #bbf7d0' }}>
-              Spare parts carry a <strong>3 to 6-month warranty</strong> depending on the specific component and manufacturer.
-            </Typography>
+            <Grid container spacing={3}>
+              {[
+                { icon: <FaTools />, title: "Labor Warranty", desc: "30‑day limited warranty on repair labor. If the same issue reoccurs within this period, we’ll fix it free of cost.", gradient: "linear-gradient(145deg,#ffffff,#f0fdf4)" },
+                { icon: <FaTools />, title: "Spare Parts Warranty", desc: "Spare parts include a 3‑6 month warranty depending on the component and manufacturer terms.", gradient: "linear-gradient(145deg,#ffffff,#f0fdf4)" },
+              ].map((item, i) => (
+                <Grid item xs={12} md={6} key={i}>
+                  <Paper elevation={0} sx={{
+                    p: 3,
+                    borderRadius: "18px",
+                    border: `1px solid ${theme.border}`,
+                    background: item.gradient,
+                    height: "100%",
+                  }}>
+                    <Typography sx={{ fontWeight: 700, color: theme.accent, mb: 1, display: "flex", alignItems: "center", gap: 1 }}>
+                      {item.icon} {item.title}
+                    </Typography>
+                    <Typography sx={{ color: theme.textMain, lineHeight: 1.7 }}>
+                      {item.desc}
+                    </Typography>
+                  </Paper>
+                </Grid>
+              ))}
+            </Grid>
           </Box>
         </Box>
-      </Box>
 
-      {/* 3. WHAT IS NOT COVERED */}
-      <Box sx={sectionWrapper}>
-        <Box sx={cardStyle}>
-          <Box sx={{ display: 'flex', gap: 2, mb: 3 }}>
-            <Box sx={iconCircle(theme.error)}><FaTimesCircle /></Box>
-            <Box>
-              <Typography variant="h6" sx={{ fontWeight: 700, color: theme.primary }}>Exclusions</Typography>
-              <Typography variant="body2" sx={{ color: theme.textMuted }}>Situations where the warranty does not apply.</Typography>
+        {/* ================= EXCLUSIONS ================= */}
+        <Box sx={sectionWrapper}>
+          <Box sx={mainCard}>
+            <Box sx={{ display: "flex", alignItems: "center", gap: 2, mb: 4 }}>
+              <Box sx={iconBadge("linear-gradient(135deg,#ef4444,#dc2626)")}>
+                <FaTimesCircle />
+              </Box>
+              <Typography variant="h5" sx={{ fontWeight: 800, color: theme.textMain }}>
+                Exclusions
+              </Typography>
+            </Box>
+
+            <Grid container spacing={3}>
+              {[
+                "Damage due to voltage fluctuations or power surges",
+                "Issues unrelated to repaired components",
+                "Third-party technician interference",
+                "Physical or water damage",
+                "External plumbing or wiring faults",
+                "Customer misuse or negligence",
+              ].map((text, i) => (
+                <Grid item xs={12} md={4} key={i}>
+                  <Paper elevation={0} sx={{
+                    p: 2.5,
+                    height: "100%",
+                    minHeight: "110px",
+                    borderRadius: "16px",
+                    border: `1px solid ${theme.border}`,
+                    background: "linear-gradient(145deg,#ffffff,#fef2f2)",
+                    display: "flex",
+                    alignItems: "flex-start",
+                    gap: 1.5,
+                    transition: "0.25s",
+                    "&:hover": { transform: "translateY(-4px)", boxShadow: "0 8px 18px rgba(0,0,0,0.08)" },
+                  }}>
+                    <FaExclamationTriangle style={{ color: theme.error, marginTop: 4, fontSize: "1.1rem" }} />
+                    <Typography sx={{ color: theme.textMain, fontSize: "0.95rem", lineHeight: 1.6, fontWeight: 500 }}>
+                      {text}
+                    </Typography>
+                  </Paper>
+                </Grid>
+              ))}
+            </Grid>
+          </Box>
+        </Box>
+
+        {/* ================= CLAIM SECTION ================= */}
+        <Box sx={sectionWrapper}>
+          <Box sx={{
+            ...mainCard,
+            background: "linear-gradient(135deg,#0f172a 0%,#1e293b 100%)",
+            color: "#fff",
+          }}>
+            <Typography variant="h5" sx={{ fontWeight: 800, mb: 1 }}>
+              How to Claim Warranty
+            </Typography>
+            <Typography sx={{ opacity: 0.85, mb: 3 }}>
+              Contact us within the warranty period with your service bill.
+            </Typography>
+
+            <Box sx={{ display: "flex", flexDirection: "column", gap: 1.5 }}>
+              <Box sx={{ display: "flex", alignItems: "center", gap: 1.5 }}>
+                <FaPhoneAlt color="#60a5fa" />
+                <Typography sx={{ fontWeight: 700 }}>Toll-Free: 1800 123 4567</Typography>
+              </Box>
+              <Box sx={{ display: "flex", alignItems: "center", gap: 1.5 }}>
+                <FaEnvelope color="#60a5fa" />
+                <Typography sx={{ fontWeight: 700 }}>bengalururepairservices@gmail.com</Typography>
+              </Box>
             </Box>
           </Box>
-
-          <List disablePadding>
-            {[
-              'Damage caused by high voltage or power surges.',
-              'Issues unrelated to the specific part we repaired.',
-              'Appliances handled by other technicians after our visit.',
-              'Physical damage, water spillage, or rust issues.',
-              'External factors like plumbing or wiring faults.'
-            ].map((text, i) => (
-              <ListItem key={i} sx={{ px: 0, alignItems: 'flex-start', gap: 2, mb: 1.5 }}>
-                <FaExclamationTriangle style={{ color: theme.error, marginTop: '4px', flexShrink: 0 }} />
-                <Typography variant="body2" sx={{ color: theme.textMain }}>{text}</Typography>
-              </ListItem>
-            ))}
-          </List>
         </Box>
-      </Box>
 
-      {/* 4. HOW TO CLAIM */}
-      <Box sx={sectionWrapper}>
-        <Box sx={{ ...cardStyle, background: `linear-gradient(135deg, ${theme.primary} 0%, #1e293b 100%)`, color: 'white' }}>
-          <Typography variant="h6" sx={{ fontWeight: 700, mb: 1 }}>How to Claim?</Typography>
-          <Typography variant="body2" sx={{ opacity: 0.8, mb: 3 }}>
-            Simply reach out to us within the warranty period with your service bill details.
+        {/* ================= FOOTER ================= */}
+        <Box sx={{ textAlign: "center", mt: 10, pt: 4, borderTop: `1px solid ${theme.border}` }}>
+          <Typography variant="caption" sx={{ color: theme.textMuted, display: "inline-flex", gap: 1 }}>
+            <FaInfoCircle /> Independent warranty by Bengaluru Repair Services
           </Typography>
-          
-          <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1.5 }}>
-            <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
-              <FaPhoneAlt color={theme.accent} />
-              <Typography variant="subtitle2" sx={{ fontWeight: 700 }}>+91 95422 20772</Typography>
-            </Box>
-            <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
-              <FaEnvelope color={theme.accent} />
-              <Typography variant="subtitle2" sx={{ fontWeight: 700 }}>bengalururepairservices@gmail.com</Typography>
-            </Box>
-          </Box>
         </Box>
-      </Box>
 
-      {/* 5. FOOTER NOTICE */}
-      <Box sx={{ textAlign: 'center', maxWidth: 650, mx: 'auto', mt: 4 }}>
-        <Typography variant="caption" sx={{ color: theme.textMuted, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 1 }}>
-          <FaInfoCircle /> Independent Warranty provided by Bengaluru Repair Service.
-        </Typography>
-      </Box>
-
+      </Container>
     </Box>
   );
 };

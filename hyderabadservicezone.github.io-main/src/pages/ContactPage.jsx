@@ -1,184 +1,243 @@
 import React from "react";
+import { Box, Typography, Container, Grid, Paper } from "@mui/material";
 import {
   FaPhoneAlt,
   FaEnvelope,
   FaGlobe,
   FaClock,
   FaShieldAlt,
-  FaUserCheck,
   FaMapMarkedAlt,
-  FaArrowRight
 } from "react-icons/fa";
 
 const ContactPage = () => {
   const theme = {
-    primary: "#0f172a",
+    primary: "#ffffff",
     accent: "#2563eb",
-    success: "#059669",
-    bg: "#f8fafc",
+    bg: "linear-gradient(0deg, #0f172a 0%, #1e293b 50%, #2563eb 100%)",
     card: "#ffffff",
-    border: "#e2e8ef",
-    textMain: "#1e293b",
-    textMuted: "#64748b",
+    border: "#e2e8f0",
+    textMain: "#1f2937",
+    textMuted: "#cbd5e1",
   };
 
-  const pageStyle = {
-    backgroundColor: theme.bg,
-    minHeight: "100vh",
-    fontFamily: "'Inter', -apple-system, sans-serif",
-    padding: "40px 16px",
-    lineHeight: "1.6",
-  };
-
-  const containerStyle = {
-    maxWidth: "900px",
-    margin: "0 auto",
-  };
-
-  const cardBase = {
+  const sectionWrapper = { maxWidth: "1200px", margin: "0 auto 60px auto" };
+  const mainCard = {
     backgroundColor: theme.card,
-    borderRadius: "20px",
-    padding: "28px",
+    borderRadius: "26px",
+    padding: "32px",
     border: `1px solid ${theme.border}`,
-    boxShadow: "0 4px 20px rgba(0,0,0,0.04)",
-    marginBottom: "24px",
+    boxShadow: "0 10px 30px rgba(0,0,0,0.05)",
+    height: "100%",
+    transition: "0.25s",
+    "&:hover": {
+      transform: "translateY(-4px)",
+      boxShadow: "0 12px 24px rgba(0,0,0,0.15)",
+    },
   };
-
-  const actionButtonStyle = {
+  const iconBadge = (gradient) => ({
+    width: 52,
+    height: 52,
+    borderRadius: "14px",
+    background: gradient,
     display: "flex",
     alignItems: "center",
-    justifyContent: "space-between",
-    padding: "16px 20px",
-    borderRadius: "16px",
-    backgroundColor: "#f1f5f9",
-    textDecoration: "none",
-    color: theme.textMain,
-    fontWeight: "600",
-    marginBottom: "12px",
-    border: "1px solid transparent",
-  };
-
-  const iconCircle = (bg) => ({
-    width: "40px",
-    height: "40px",
-    borderRadius: "12px",
-    background: bg,
-    display: "flex",
     justifyContent: "center",
-    alignItems: "center",
-    color: "white",
-    fontSize: "1.1rem",
+    color: "#fff",
+    fontSize: "1.3rem",
+    boxShadow: "0 6px 14px rgba(0,0,0,0.15)",
   });
 
   return (
-    <div style={pageStyle}>
-      <div style={containerStyle}>
+    <Box sx={{ background: theme.bg, minHeight: "100vh", py: 10, px: 2 }}>
+      <Container>
 
-        {/* Hero Section */}
-        <div style={{ textAlign: "center", marginBottom: "50px" }}>
-          <h1 style={{ fontSize: "2.5rem", color: theme.primary, marginBottom: "10px" }}>
-            Contact Support
-          </h1>
-          <p style={{ color: theme.textMuted, fontSize: "1.1rem" }}>
-            Fast, reliable appliance repair services across Bengaluru
-          </p>
-        </div>
-
-        {/* Contact Card */}
-        <div style={cardBase}>
-          <div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "16px" }}>
-            <div style={iconCircle(theme.accent)}><FaUserCheck /></div>
-            <h2 style={{ margin: 0, fontSize: "1.3rem" }}>Reach Our Experts</h2>
-          </div>
-
-          <a
-            href="tel:+919542220772"
-            style={{ ...actionButtonStyle, backgroundColor: "#eff6ff", border: "1px solid #dbeafe" }}
-          >
-            <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
-              <FaPhoneAlt style={{ color: theme.accent }} />
-              <span>+91 95422 20772</span>
-            </div>
-            <FaArrowRight style={{ opacity: 0.3 }} />
-          </a>
-
-          <a href="mailto:bengalururepairservices@gmail.com" style={actionButtonStyle}>
-            <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
-              <FaEnvelope style={{ color: theme.textMuted }} />
-              <span>bengalururepairservices@gmail.com</span>
-            </div>
-            <FaArrowRight style={{ opacity: 0.3 }} />
-          </a>
-
-          <a
-            href="https://www.bengalururepairservices.com"
-            target="_blank"
-            rel="noreferrer"
-            style={actionButtonStyle}
-          >
-            <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
-              <FaGlobe style={{ color: theme.textMuted }} />
-              <span>www.bengalururepairservices.com</span>
-            </div>
-            <FaArrowRight style={{ opacity: 0.3 }} />
-          </a>
-        </div>
-
-        {/* Availability */}
-        <div style={{ ...cardBase, display: "flex", alignItems: "center", gap: "20px" }}>
-          <div style={{ background: "#f0fdf4", color: theme.success, padding: "12px", borderRadius: "14px" }}>
-            <FaClock size={22} />
-          </div>
-          <div>
-            <h3 style={{ margin: 0 }}>Open 24 / 7</h3>
-            <p style={{ margin: 0, color: theme.textMuted, fontSize: "0.9rem" }}>
-              Weekends & Holidays included
-            </p>
-          </div>
-        </div>
-
-        {/* Service Area */}
-        <div style={cardBase}>
-          <div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "16px" }}>
-            <div style={iconCircle(theme.accent)}><FaMapMarkedAlt /></div>
-            <h2 style={{ margin: 0, fontSize: "1.3rem" }}>Our Service Area</h2>
-          </div>
-
-          <div style={{ height: "280px", borderRadius: "16px", overflow: "hidden", border: `1px solid ${theme.border}` }}>
-            <iframe
-              title="Bengaluru Service Area"
-              src="https://www.google.com/maps?q=Bengaluru&output=embed"
-              width="100%"
-              height="100%"
-              style={{ border: 0 }}
-              loading="lazy"
-            />
-          </div>
-        </div>
-
-        {/* Trust & Disclaimer */}
-        <div style={{ ...cardBase, textAlign: "center" }}>
-          <p style={{ fontSize: "0.85rem", color: theme.textMuted, display: "flex", justifyContent: "center", gap: "6px" }}>
-            <FaShieldAlt /> 100% Genuine Spare Parts
-          </p>
-          <div
-            style={{
-              marginTop: "16px",
-              padding: "16px",
-              borderRadius: "12px",
-              background: "#f1f5f9",
-              fontSize: "0.8rem",
-              color: "#64748b",
-              border: "1px dashed #cbd5e1",
+        {/* ================= HEADER ================= */}
+        <Box sx={{ textAlign: "center", mb: 10, position: "relative" }}>
+          <Box sx={{
+            position: "absolute",
+            top: "-50px",
+            left: "50%",
+            transform: "translateX(-50%)",
+            width: "280px",
+            height: "280px",
+            background: "radial-gradient(circle, rgba(37,99,235,0.18) 0%, rgba(37,99,235,0) 70%)",
+            zIndex: 0,
+          }}/>
+          <Typography
+            variant="h2"
+            sx={{
+              fontWeight: 900,
+              fontSize: { xs: "2.3rem", md: "3.2rem" },
+              color: theme.primary,
+              letterSpacing: "-0.04em",
+              position: "relative",
+              zIndex: 1,
+              mb: 2,
             }}
           >
-            <strong>Disclaimer:</strong> Bengaluru Repair Service is an independent service provider.
-            All brand names are used only for identification purposes.
-          </div>
-        </div>
+            Contact Support
+          </Typography>
+          <Box sx={{
+            width: "130px",
+            height: "6px",
+            margin: "0 auto",
+            borderRadius: "30px",
+            background: theme.accent,
+            boxShadow: "0 4px 14px rgba(37,99,235,0.4)",
+            mb: 3,
+          }}/>
+          <Typography sx={{ color: theme.textMuted, fontSize: "1.1rem", maxWidth: "640px", margin: "0 auto" }}>
+            Fast, reliable doorstep appliance repair services across Bengaluru.
+          </Typography>
+        </Box>
 
-      </div>
-    </div>
+        {/* ================= CONTACT CARDS ================= */}
+        <Box sx={sectionWrapper}>
+          <Grid container spacing={3}>
+
+            {/* Phone */}
+            <Grid item xs={12} md={4}>
+              <Paper elevation={0} sx={mainCard}>
+                <Box sx={{ display: "flex", alignItems: "center", gap: 2, mb: 2 }}>
+                  <Box sx={iconBadge("linear-gradient(135deg,#2563eb,#1d4ed8)")}>
+                    <FaPhoneAlt />
+                  </Box>
+                  <Typography variant="h6" sx={{ fontWeight: 800 }}>
+                    Toll-Free
+                  </Typography>
+                </Box>
+                <Typography sx={{ color: theme.textMuted, mb: 2 }}>
+                  Speak directly with our service experts.
+                </Typography>
+                <Typography sx={{ fontWeight: 700, color: theme.accent }}>
+                  1800 123 4567
+                </Typography>
+              </Paper>
+            </Grid>
+
+            {/* Email */}
+            <Grid item xs={12} md={4}>
+              <Paper elevation={0} sx={mainCard}>
+                <Box sx={{ display: "flex", alignItems: "center", gap: 2, mb: 2 }}>
+                  <Box sx={iconBadge("linear-gradient(135deg,#0ea5e9,#0284c7)")}>
+                    <FaEnvelope />
+                  </Box>
+                  <Typography variant="h6" sx={{ fontWeight: 800 }}>
+                    Email Support
+                  </Typography>
+                </Box>
+                <Typography sx={{ color: theme.textMuted, mb: 2 }}>
+                  Send us your service queries anytime.
+                </Typography>
+                <Typography sx={{ fontWeight: 700, color: theme.textMain }}>
+                  bengalururepairservices@gmail.com
+                </Typography>
+              </Paper>
+            </Grid>
+
+            {/* Website */}
+            <Grid item xs={12} md={4}>
+              <Paper elevation={0} sx={mainCard}>
+                <Box sx={{ display: "flex", alignItems: "center", gap: 2, mb: 2 }}>
+                  <Box sx={iconBadge("linear-gradient(135deg,#6366f1,#4f46e5)")}>
+                    <FaGlobe />
+                  </Box>
+                  <Typography variant="h6" sx={{ fontWeight: 800 }}>
+                    Website
+                  </Typography>
+                </Box>
+                <Typography sx={{ color: theme.textMuted, mb: 2 }}>
+                  Book services online easily.
+                </Typography>
+                <Typography sx={{ fontWeight: 700 }}>
+                  www.bengalururepairservices.com
+                </Typography>
+              </Paper>
+            </Grid>
+
+          </Grid>
+        </Box>
+
+        {/* ================= AVAILABILITY + MAP ================= */}
+        <Box sx={sectionWrapper}>
+          <Grid container spacing={3}>
+
+            {/* Availability */}
+            <Grid item xs={12} md={4}>
+              <Paper elevation={0} sx={mainCard}>
+                <Box sx={{ display: "flex", alignItems: "center", gap: 2, mb: 2 }}>
+                  <Box sx={iconBadge("linear-gradient(135deg,#10b981,#059669)")}>
+                    <FaClock />
+                  </Box>
+                  <Typography variant="h6" sx={{ fontWeight: 800 }}>
+                    Open 24 / 7
+                  </Typography>
+                </Box>
+                <Typography sx={{ color: theme.textMuted }}>
+                  Weekends & holidays included for uninterrupted service.
+                </Typography>
+              </Paper>
+            </Grid>
+
+            {/* Map */}
+            <Grid item xs={12} md={8}>
+              <Paper elevation={0} sx={{ ...mainCard, p: 0, overflow: "hidden" }}>
+                <Box sx={{ p: 3, pb: 0, display: "flex", alignItems: "center", gap: 2 }}>
+                  <Box sx={iconBadge("linear-gradient(135deg,#2563eb,#1d4ed8)")}>
+                    <FaMapMarkedAlt />
+                  </Box>
+                  <Typography variant="h6" sx={{ fontWeight: 800 }}>
+                    Service Coverage Area
+                  </Typography>
+                </Box>
+                <Box sx={{ height: 320, mt: 2 }}>
+                  <iframe
+                    title="Bengaluru Service Area"
+                    src="https://www.google.com/maps?q=Bengaluru&output=embed"
+                    width="100%"
+                    height="100%"
+                    style={{ border: 0 }}
+                    loading="lazy"
+                  />
+                </Box>
+              </Paper>
+            </Grid>
+
+          </Grid>
+        </Box>
+
+        {/* ================= TRUST + DISCLAIMER ================= */}
+        <Box sx={sectionWrapper}>
+          <Paper elevation={0} sx={{ ...mainCard, textAlign: "center" }}>
+            <Box sx={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              gap: 1,
+              color: theme.accent,
+              fontWeight: 700,
+              mb: 2,
+            }}>
+              <FaShieldAlt /> 100% Genuine Spare Parts
+            </Box>
+            <Box sx={{
+              mt: 2,
+              p: 2,
+              borderRadius: "14px",
+              background: "#1e293b",
+              color: "#fff",
+              border: `1px dashed ${theme.accent}`,
+              fontSize: "0.85rem",
+            }}>
+              <strong>Disclaimer:</strong> Bengaluru Repair Services is an
+              independent service provider. Brand names are used only for
+              identification purposes.
+            </Box>
+          </Paper>
+        </Box>
+
+      </Container>
+    </Box>
   );
 };
 

@@ -3,7 +3,7 @@ import { Box, Fab } from '@mui/material';
 import PhoneIcon from '@mui/icons-material/Phone';
 
 const FloatingPhone = () => {
-  const phoneNumber = 'tel:9542220772'; // Updated phone number
+  const phoneNumber = 'tel:1800123456'; // Toll-free number
 
   const callPhone = () => {
     window.open(phoneNumber, '_self');
@@ -25,16 +25,20 @@ const FloatingPhone = () => {
       }}
     >
       <Fab
-        color="primary"
+        sx={{ 
+          backgroundColor: '#FF6D00', // Orange color
+          color: '#fff',
+          '&:hover': { backgroundColor: '#FF8C42' }, // Slightly lighter on hover
+          boxShadow: 6
+        }}
         aria-label="Phone"
         onClick={callPhone}
-        sx={{ boxShadow: 6 }}
       >
         <PhoneIcon fontSize="large" />
       </Fab>
       <span style={{
         marginLeft: 12,
-        background: '#1976d2',
+        background: '#FF6D00', // Same orange as Fab
         color: 'white',
         padding: '8px 16px',
         borderRadius: '20px',
@@ -43,17 +47,17 @@ const FloatingPhone = () => {
         boxShadow: '0 2px 8px rgba(0,0,0,0.12)',
         letterSpacing: '0.5px',
       }}>
-        Call us now
+        Call us toll-free
       </span>
       <style>{`
         @keyframes pulse {
-          0% { box-shadow: 0 0 0 0 rgba(25, 118, 210, 0.7); }
-          70% { box-shadow: 0 0 0 16px rgba(25, 118, 210, 0); }
-          100% { box-shadow: 0 0 0 0 rgba(25, 118, 210, 0); }
+          0% { box-shadow: 0 0 0 0 rgba(255, 109, 0, 0.7); }
+          70% { box-shadow: 0 0 0 16px rgba(255, 109, 0, 0); }
+          100% { box-shadow: 0 0 0 0 rgba(255, 109, 0, 0); }
         }
       `}</style>
     </Box>
   );
 };
 
-export default FloatingPhone; 
+export default FloatingPhone;

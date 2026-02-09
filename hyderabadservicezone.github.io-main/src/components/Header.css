@@ -1,31 +1,52 @@
+/* ===== HEADER CONTAINER ===== */
+.header {
+background: linear-gradient(135deg, hsl(221, 69%, 52%), hsl(221, 56%, 44%));
+/* Deep → Royal Blue gradient */
+box-shadow: 0 4px 20px #343bbf14;
+}
+
+/* ===== LOGO ===== */
 .header-logo {
-  width: 200px;
-  height: 80px;
-  border-radius: 16px;
-  object-fit: contain;
+width: 200px;
+height: 80px;
+border-radius: 16px;
+object-fit: contain;
 }
 
+/* ===== NAV BUTTONS ===== */
 .header-nav-btn {
-  /* color: #fff !important; */
-  font-weight: 600;
-  font-size: 1.1rem;
-  background: transparent !important;
-  transition: color 0.2s;
+color: #ffffff !important;
+font-weight: 600;
+font-size: 1.1rem;
+background: transparent !important;
+transition: all 0.3s ease;
 }
 
-.header-nav-btn:hover, .header-nav-btn:focus {
-  color: #ff9800 !important;
-  background: transparent !important;
+/* Hover → Trust + Action psychology */
+.header-nav-btn:hover,
+.header-nav-btn:focus {
+color: #ff9800 !important; /* Orange CTA contrast */
+background: transparent !important;
+transform: translateY(-1px);
 }
 
+/* ===== DROPDOWN MENU ITEMS ===== */
 .header-menu-item {
-  /* color: #222 !important; */
-  font-weight: 500;
-  font-size: 1rem;
-  transition: color 0.2s;
+color: #1e293b !important;
+font-weight: 500;
+font-size: 1rem;
+transition: all 0.25s ease;
 }
 
-.header-menu-item:hover, .header-menu-item:focus {
-  color: #ff9800 !important;
-  background: rgba(255,152,0,0.08) !important;
-} 
+/* Hover → Warm highlight for clickability */
+.header-menu-item:hover,
+.header-menu-item:focus {
+color: #ff9800 !important;
+background: rgba(37, 99, 235, 0.08) !important;
+}
+
+/* ===== OPTIONAL: ACTIVE NAV LINK ===== */
+.header-nav-btn.active {
+color: #ff9800 !important;
+border-bottom: 2px solid #ff9800;
+}

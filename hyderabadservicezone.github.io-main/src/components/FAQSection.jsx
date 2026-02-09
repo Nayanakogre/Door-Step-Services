@@ -1,29 +1,20 @@
 import React, { useState } from 'react';
-import { 
-  Box, 
-  Typography, 
-  Accordion, 
-  AccordionSummary, 
-  AccordionDetails, 
-  Divider,
-  useTheme
-} from '@mui/material';
-import { ExpandMore as ExpandMoreIcon, Add as AddIcon } from '@mui/icons-material';
+import { Box, Typography, Accordion, AccordionSummary, AccordionDetails } from '@mui/material';
+import { ExpandMore as ExpandMoreIcon } from '@mui/icons-material';
 
 const FAQSection = () => {
   const [expanded, setExpanded] = useState(null);
-  const theme = useTheme();
 
   const faqs = [
     {
       id: 1,
-      question: "What types of appliances do you repair?",
-      answer: "We repair all major home appliances including washing machines, air conditioners, refrigerators, microwaves, dishwashers, and air coolers of all major brands."
+      question: "Which appliances do you repair in Bangalore?",
+      answer: "We repair all major home appliances including washing machines, air conditioners, refrigerators, microwaves, dishwashers, and air coolers of all leading brands in Bangalore."
     },
     {
       id: 2,
       question: "Do you provide same-day service?",
-      answer: "Yes, we provide same-day doorstep service across all areas in Hyderabad ,AP & Telangana, depending on technician availability."
+      answer: "Yes! We provide same-day doorstep service across Bangalore depending on technician availability."
     },
     {
       id: 3,
@@ -32,18 +23,18 @@ const FAQSection = () => {
     },
     {
       id: 4,
-      question: "What are your service charges?",
-      answer: "We charge a basic inspection/service fee of ₹199/-, which is adjusted in the final bill if you proceed with the repair. Charges vary depending on the appliance and issue."
+      question: "What are the service charges?",
+      answer: "We charge a basic inspection fee of ₹199/-, which is adjusted in the final bill if you proceed with the repair. Final charges vary depending on the appliance and issue."
     },
     {
       id: 5,
       question: "Do you use genuine spare parts?",
-      answer: "Yes. We use genuine or brand-compatible spare parts based on availability and customer preference."
+      answer: "Yes. We use genuine or brand-compatible spare parts based on availability and your preference."
     },
     {
       id: 6,
       question: "How can I book a service?",
-      answer: "You can call us directly at 9542220772 to schedule a service or get more information. You can also contact us via WhatsApp."
+      answer: "You can call us directly at 9542220772 to schedule a service or get more information. WhatsApp support is also available for quick booking."
     },
     {
       id: 7,
@@ -53,7 +44,12 @@ const FAQSection = () => {
     {
       id: 8,
       question: "Do you provide warranty on repairs?",
-      answer: "Yes, we offer a limited warranty on certain repairs and spare parts. Please ask our technician for warranty details during the visit."
+      answer: "Yes, we offer a limited warranty on certain repairs and spare parts. Please confirm warranty details with our technician during the visit."
+    },
+    {
+      id: 9,
+      question: "Which areas in Bangalore do you cover?",
+      answer: "We provide service across all major areas including Whitefield, BTM Layout, Koramangala, Marathahalli, Electronic City, and surrounding neighborhoods."
     }
   ];
 
@@ -62,124 +58,59 @@ const FAQSection = () => {
   };
 
   return (
-    <Box 
-      component="section" 
+    <Box
+      component="section"
       id="faq"
       sx={{
-        py: { xs: 8, md: 12 },
-        backgroundColor: theme.palette.background.paper,
-        position: 'relative'
+        py: { xs: 10, md: 14 },
+        background: 'linear-gradient(135deg, rgb(43, 62, 205) 0%, #030c50 50%, #223fc2 100%)',
       }}
     >
-      <Box 
-        sx={{
-          maxWidth: '1200px',
-          mx: 'auto',
-          px: { xs: 3, sm: 4, md: 6 },
-        }}
-      >
+      <Box sx={{ maxWidth: 1200, mx: 'auto', px: { xs: 3, md: 6 } }}>
+        
         {/* Section Header */}
-        <Box sx={{ textAlign: 'center', mb: { xs: 6, md: 8 } }}>
-          <Typography 
-            variant="h3" 
-            component="h2"
-            sx={{
-              fontWeight: 700,
-              fontSize: { xs: '2rem', md: '2.5rem' },
-              mb: 2,
-              color: theme.palette.text.primary
-            }}
-          >
+        <Box textAlign="center" mb={8} color="#fff">
+          <Typography variant="h4" fontWeight={800} gutterBottom>
             Frequently Asked Questions
           </Typography>
-          <Divider 
-            sx={{ 
-              width: '80px', 
-              height: '4px', 
-              backgroundColor: theme.palette.primary.main, 
+          <Box
+            sx={{
+              width: 80,
+              height: 4,
+              background: 'linear-gradient(90deg, #60a5fa, #3b82f6)',
               mx: 'auto',
-              borderRadius: '2px'
-            }} 
+              borderRadius: 2,
+              mb: 3
+            }}
           />
+          <Typography variant="subtitle1" color="rgba(255,255,255,0.85)" maxWidth={650} mx="auto">
+            Here are answers to the most common questions about our appliance repair services in Bangalore.
+          </Typography>
         </Box>
 
         {/* FAQ Accordions */}
-        <Box sx={{ 
-          maxWidth: '800px', 
-          mx: 'auto',
-          '& .MuiAccordion-root': {
-            boxShadow: 'none',
-            border: `1px solid ${theme.palette.divider}`,
-            borderRadius: '8px !important',
-            mb: 2,
-            overflow: 'hidden',
-            transition: 'all 0.3s ease',
-            '&:before': {
-              display: 'none'
-            },
-            '&:hover': {
-              borderColor: theme.palette.primary.main,
-              boxShadow: theme.shadows[2]
-            }
-          },
-          '& .MuiAccordionSummary-root': {
-            backgroundColor: theme.palette.background.default,
-            '&:hover': {
-              backgroundColor: theme.palette.action.hover
-            }
-          },
-          '& .Mui-expanded': {
-            backgroundColor: `${theme.palette.primary.light}08`,
-            borderColor: theme.palette.primary.main
-          }
-        }}>
+        <Box sx={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
           {faqs.map((faq) => (
-            <Accordion 
+            <Accordion
               key={faq.id}
               expanded={expanded === faq.id}
               onChange={handleChange(faq.id)}
-              disableGutters
+              sx={{
+                backgroundColor: '#fff',        // white card
+                color: '#111827',               // dark text
+                borderRadius: 3,
+                boxShadow: '0 8px 30px rgba(0,0,0,0.08)',
+                '&:hover': { boxShadow: '0 12px 40px rgba(0,0,0,0.12)' },
+              }}
             >
               <AccordionSummary
-                expandIcon={
-                  expanded === faq.id ? (
-                    <ExpandMoreIcon color="primary" />
-                  ) : (
-                    <AddIcon />
-                  )
-                }
-                sx={{
-                  py: { xs: 1.5, md: 2 },
-                  px: { xs: 2, md: 3 }
-                }}
+                expandIcon={<ExpandMoreIcon sx={{ color: '#3b82f6' }} />}
+                sx={{ px: 3, py: 2 }}
               >
-                <Typography 
-                  variant="subtitle1" 
-                  component="h3"
-                  sx={{ 
-                    fontWeight: 600,
-                    color: expanded === faq.id ? 
-                      theme.palette.primary.main : 
-                      theme.palette.text.primary
-                  }}
-                >
-                  {faq.question}
-                </Typography>
+                <Typography fontWeight={600}>{faq.question}</Typography>
               </AccordionSummary>
-              <AccordionDetails
-                sx={{ 
-                  py: { xs: 1, md: 2 },
-                  px: { xs: 2, md: 3 },
-                  backgroundColor: theme.palette.background.paper
-                }}
-              >
-                <Typography 
-                  variant="body1"
-                  sx={{ 
-                    color: theme.palette.text.secondary,
-                    lineHeight: 1.6
-                  }}
-                >
+              <AccordionDetails sx={{ px: 3, py: 2 }}>
+                <Typography variant="body2" sx={{ lineHeight: 1.6, opacity: 0.9 }}>
                   {faq.answer}
                 </Typography>
               </AccordionDetails>

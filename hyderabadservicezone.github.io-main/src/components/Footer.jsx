@@ -48,11 +48,11 @@ const Footer = () => {
           <ul>
             <li><Link to="/">Home</Link></li>
             <li><Link to="/service/washing-machine">Washing Machine Repair</Link></li>
-            <li><Link to="/service/microwave">Microwave Oven Repair</Link></li>
+            {/* <li><Link to="/service/microwave">Microwave Oven Repair</Link></li> */}
             <li><Link to="/service/ac">Air Conditioner Repair</Link></li>
             <li><Link to="/service/refrigerator">Refrigerator Repair</Link></li>
-            <li><Link to="/service/dishwasher">Dishwasher Repair</Link></li>
-            <li><Link to="/service/air-cooler">Air Cooler Service</Link></li>
+            {/* <li><Link to="/service/dishwasher">Dishwasher Repair</Link></li> */}
+            {/* <li><Link to="/service/air-cooler">Air Cooler Service</Link></li> */}
           </ul>
         </div>
 
@@ -73,7 +73,7 @@ const Footer = () => {
             style={{ border: 0, borderRadius: '12px', marginTop: '10px' }} 
             allowFullScreen 
             loading="lazy"
-            title="Hyderabad Service Zone Location"
+            title="Banglore  Zone Location"
           ></iframe>
         </div>
       </div>

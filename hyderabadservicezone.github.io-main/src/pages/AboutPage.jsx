@@ -1,185 +1,242 @@
-import React from 'react';
-import { Box, Typography, List, ListItem, ListItemIcon, Divider } from '@mui/material';
-import { 
-  CheckCircle, 
-  WhatsApp, 
-  Call, 
-  Engineering, 
-  WorkspacePremium, 
-  HistoryEdu,
+import React from "react";
+import {
+  Box,
+  Typography,
+  Grid,
+  Divider,
+  Button,
+  Container
+} from "@mui/material";
+import {
+  CheckCircle,
+  WhatsApp,
+  Call,
+  Engineering,
+  WorkspacePremium,
   LocationOn,
   Verified
-} from '@mui/icons-material';
+} from "@mui/icons-material";
 
 const AboutPage = () => {
   const theme = {
-    primary: '#0f172a', // Deep Slate
-    accent: '#2563eb',  // Trust Blue
-    bg: '#f8fafc',
-    card: '#ffffff',
-    border: '#e2e8f0',
-    textMain: '#1e293b',
-    textMuted: '#64748b',
-    success: '#059669',
+    primary: "#ffffff", // white for headings
+    accent: "#2563eb",
+    bg: "#0f172a", // dark background
+    card: "#ffffff", // microcards white replaced with gradient
+    border: "#333",
+    textMain: "#ffffff",
+    textMuted: "#cbd5e1",
+    success: "#10b981"
   };
 
-  const sectionWrapper = {
-    maxWidth: '650px',
-    margin: '0 auto 32px auto',
+  const container = {
+    maxWidth: "1200px",
+    margin: "0 auto",
+    padding: "60px 20px"
   };
 
-  const cardStyle = {
-    backgroundColor: theme.card,
-    borderRadius: '24px',
-    padding: '32px',
+  const mainCard = {
+    background: theme.card,
+    borderRadius: "26px",
+    padding: "32px",
     border: `1px solid ${theme.border}`,
-    boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.05)',
+    boxShadow: "0 10px 30px rgba(0,0,0,0.08)"
   };
 
-  const iconCircle = (bg) => ({
-    width: '56px',
-    height: '56px',
-    borderRadius: '16px',
+  const microCard = {
+    background: "linear-gradient(145deg,#2563eb,#1d4ed8)", // blue gradient
+    color: "#fff", // white text
+    borderRadius: "18px",
+    padding: "24px",
+    textAlign: "center",
+    height: "100%",
+    border: "1px solid #1e40af",
+    transition: "all 0.3s ease",
+    "&:hover": {
+      transform: "translateY(-6px)",
+      boxShadow: "0 12px 28px rgba(37,99,235,0.4)",
+      borderColor: "#0ea5e9"
+    }
+  };
+
+  const iconBadge = (bg) => ({
+    width: 52,
+    height: 52,
+    borderRadius: 16,
     background: bg,
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    color: 'white',
-    fontSize: '1.5rem',
-    mb: 2
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    color: "#fff",
+    margin: "0 auto 14px auto",
+    fontSize: 24
   });
 
   return (
-    <Box sx={{ backgroundColor: theme.bg, minHeight: '100vh', py: 8, px: 2 }}>
-      
-      {/* 1. HEADER & INTRO */}
-      <Box sx={{ textAlign: 'center', mb: 6, maxWidth: 650, mx: 'auto' }}>
-        <Box sx={{ 
-          display: 'inline-flex', 
-          alignItems: 'center', 
-          gap: 1, 
-          px: 2, 
-          py: 0.5, 
-          borderRadius: '100px', 
-          backgroundColor: '#dbeafe', 
-          color: theme.accent,
-          mb: 2
-        }}>
-          <HistoryEdu sx={{ fontSize: 14 }} />
-          <Typography variant="caption" sx={{ fontWeight: 700, letterSpacing: 1, textTransform: 'uppercase' }}>
-            Our Story
+    <Box sx={{ background: theme.bg, minHeight: "100vh", py: 10 }}>
+      <Container sx={container}>
+
+        {/* HERO */}
+        <Box sx={{ textAlign: "center", mb: 10, position: "relative" }}>
+          <Box
+            sx={{
+              position: "absolute",
+              top: "-60px",
+              left: "50%",
+              transform: "translateX(-50%)",
+              width: "300px",
+              height: "300px",
+              background: "radial-gradient(circle, rgba(37,99,235,0.18) 0%, rgba(37,99,235,0) 70%)",
+              zIndex: 0
+            }}
+          />
+          <Typography
+            variant="h3"
+            sx={{
+              fontWeight: 800,
+              fontSize: { xs: "2.3rem", md: "3rem" },
+              color: theme.primary, // white
+              mb: 2,
+              position: "relative",
+              zIndex: 1
+            }}
+          >
+            Bengaluru Repair Services
+          </Typography>
+
+          <Box sx={{ width: 80, height: 4, background: theme.accent, borderRadius: 2, mx: "auto", mb: 2 }} />
+          <Typography sx={{ color: theme.textMuted, maxWidth: 640, margin: "0 auto", lineHeight: 1.7 }}>
+            Reliable home appliance repair solutions across Bengaluru for over 5+ years.
           </Typography>
         </Box>
-        <Typography variant="h3" sx={{ fontWeight: 800, color: theme.primary, mb: 1, letterSpacing: '-0.02em' }}>
-          Bengaluru Repair Services
-        </Typography>
-        <Typography sx={{ color: theme.textMuted, fontSize: '1.1rem' }}>
-          Providing reliable home appliance solutions across Bengaluru for over 5 years.
-        </Typography>
-      </Box>
 
-      {/* 2. THE MISSION CARD */}
-      <Box sx={sectionWrapper}>
-        <Box sx={cardStyle}>
-          <Box sx={iconCircle(theme.accent)}><Engineering /></Box>
-          <Typography variant="h5" sx={{ fontWeight: 700, color: theme.primary, mb: 2 }}>
-            Expertise You Can Trust
-          </Typography>
-          <Typography variant="body1" sx={{ color: theme.textMain, lineHeight: 1.8, mb: 2 }}>
-            We started with a simple mission: to eliminate the stress of appliance breakdowns for Bengaluru residents. 
-            Today, we are a leading independent service provider for <strong>Washing Machines, ACs, Refrigerators, and more</strong>.
-          </Typography>
-          <Box sx={{ display: 'flex', gap: 4, mt: 3 }}>
-            <Box>
-              <Typography variant="h4" sx={{ fontWeight: 800, color: theme.accent }}>5+</Typography>
-              <Typography variant="caption" sx={{ color: theme.textMuted, textTransform: 'uppercase', fontWeight: 700 }}>Years Exp</Typography>
-            </Box>
-            <Box>
-              <Typography variant="h4" sx={{ fontWeight: 800, color: theme.success }}>1000+</Typography>
-              <Typography variant="caption" sx={{ color: theme.textMuted, textTransform: 'uppercase', fontWeight: 700 }}>Repairs Done</Typography>
-            </Box>
-          </Box>
+        {/* EXPERTISE CARD */}
+        {/* EXPERTISE CARD */}
+<Box sx={{ ...mainCard, mb: 6 }}>
+  <Grid container spacing={4} alignItems="center">
+    <Grid item xs={12} md={8}>
+      <Box sx={iconBadge(theme.accent)}>
+        <Engineering />
+      </Box>
+      <Typography
+        variant="h5"
+        sx={{ fontWeight: 700, color: "#000000", mb: 2 }} // Black text
+      >
+        Expertise You Can Trust
+      </Typography>
+      <Typography sx={{ color: "#000000", mb: 3 }}> 
+        We started with a mission to remove the stress of appliance breakdowns. Today we provide expert repair services for Washing Machines, Air Conditioners, Refrigerators and more.
+      </Typography>
+      <Box sx={{ display: "flex", gap: 6 }}>
+        <Box>
+          <Typography variant="h4" sx={{ fontWeight: 800, color: theme.accent }}>5+</Typography>
+          <Typography variant="caption" sx={{ color: theme.textMuted }}>Years Experience</Typography>
+        </Box>
+        <Box>
+          <Typography variant="h4" sx={{ fontWeight: 800, color: theme.success }}>1000+</Typography>
+          <Typography variant="caption" sx={{ color: theme.textMuted }}>Repairs Completed</Typography>
         </Box>
       </Box>
+    </Grid>
+  </Grid>
+</Box>
 
-      {/* 3. WHY CHOOSE US (UX: The List Flow) */}
-      <Box sx={sectionWrapper}>
-        <Box sx={cardStyle}>
-          <Typography variant="h6" sx={{ fontWeight: 700, color: theme.primary, mb: 3, display: 'flex', alignItems: 'center', gap: 1 }}>
-            <WorkspacePremium sx={{ color: theme.accent }} /> Why Choose Our Service?
-          </Typography>
-          
-          <List disablePadding>
-            {[
-              { title: 'Verified Technicians', desc: 'Experienced & background-checked professionals.' },
-              { title: 'Genuine Parts', desc: 'We only use quality, compatible, and tested components.' },
-              { title: 'Transparent Pricing', desc: 'Honest ₹199 inspection with no hidden fees.' },
-              { title: 'Same-Day Support', desc: 'Quick doorstep visits across all Bengaluru localities.' }
-            ].map((item, i) => (
-              <React.Fragment key={i}>
-                <ListItem sx={{ px: 0, py: 2, alignItems: 'flex-start', gap: 2 }}>
-                  <CheckCircle sx={{ color: theme.success, mt: 0.5 }} />
-                  <Box>
-                    <Typography sx={{ fontWeight: 700, color: theme.textMain }}>{item.title}</Typography>
-                    <Typography variant="body2" sx={{ color: theme.textMuted }}>{item.desc}</Typography>
+
+        {/* WHY CHOOSE US */}
+        <Box sx={{ mb: 6 }}>
+          <Box sx={mainCard}>
+            <Typography variant="h6" sx={{ fontWeight: 700, color: theme.primary, display: "flex", alignItems: "center", gap: 1, mb: 3 }}>
+              <WorkspacePremium sx={{ color: theme.accent }} /> Why Choose Us
+            </Typography>
+            <Grid container spacing={3} justifyContent="center">
+              {[
+                "Verified Technicians",
+                "Genuine Spare Parts",
+                "Transparent Pricing",
+                "Same‑Day Support",
+                "Doorstep Service",
+                "Warranty Repairs"
+              ].map((item, i) => (
+                <Grid item xs={12} sm={6} md={4} key={i}>
+                  <Box sx={microCard}>
+                    <CheckCircle sx={{ color: theme.success, fontSize: 22, mb: 1 }} />
+                    <Typography sx={{ fontWeight: 700 }}>{item}</Typography>
                   </Box>
-                </ListItem>
-                {i !== 3 && <Divider sx={{ opacity: 0.5 }} />}
-              </React.Fragment>
-            ))}
-          </List>
-        </Box>
-      </Box>
-
-      {/* 4. SERVICE AREA & CTA */}
-      <Box sx={sectionWrapper}>
-        <Box sx={{ ...cardStyle, background: `linear-gradient(135deg, ${theme.primary} 0%, #1e293b 100%)`, color: 'white', textAlign: 'center' }}>
-          <LocationOn sx={{ fontSize: 40, mb: 1, opacity: 0.8 }} />
-          <Typography variant="h6" sx={{ fontWeight: 700, mb: 1 }}>Service Area</Typography>
-          <Typography variant="body2" sx={{ opacity: 0.8, mb: 3 }}>
-            We serve the entire Bengaluru city and surrounding nearby localities.
-          </Typography>
-          
-          <Divider sx={{ backgroundColor: 'rgba(255,255,255,0.1)', mb: 3 }} />
-          
-          <Typography variant="subtitle1" sx={{ fontWeight: 700, mb: 2 }}>Ready to book a technician?</Typography>
-          
-          <Box sx={{ display: 'flex', justifyContent: 'center', gap: 2, flexWrap: 'wrap' }}>
-            <Box 
-              component="a" 
-              href="tel:+919542220772"
-              sx={{ 
-                display: 'flex', alignItems: 'center', gap: 1, px: 3, py: 1.5, 
-                borderRadius: '12px', backgroundColor: theme.accent, color: 'white', 
-                textDecoration: 'none', fontWeight: 700, transition: '0.2s',
-                '&:hover': { backgroundColor: '#1d4ed8' }
-              }}
-            >
-              <Call fontSize="small" /> Call Now
-            </Box>
-            <Box 
-              component="a" 
-              href="https://wa.me/919542220772"
-              sx={{ 
-                display: 'flex', alignItems: 'center', gap: 1, px: 3, py: 1.5, 
-                borderRadius: '12px', backgroundColor: theme.success, color: 'white', 
-                textDecoration: 'none', fontWeight: 700, transition: '0.2s',
-                '&:hover': { backgroundColor: '#047857' }
-              }}
-            >
-              <WhatsApp fontSize="small" /> WhatsApp
-            </Box>
+                </Grid>
+              ))}
+            </Grid>
           </Box>
         </Box>
-      </Box>
 
-      {/* 5. FINAL TRUST BADGE */}
-      <Box sx={{ textAlign: 'center', mt: 4 }}>
-        <Typography variant="caption" sx={{ color: theme.textMuted, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 1 }}>
-          <Verified sx={{ fontSize: 16 }} /> Trusted by 1000+ Households in Bengaluru
-        </Typography>
-      </Box>
+        {/* SERVICE AREA CTA */}
+        <Box sx={{ ...mainCard, background: "linear-gradient(135deg,#0f172a 0%, #1e293b 100%)", color: "#fff", textAlign: "center", mb: 6 }}>
+          <LocationOn sx={{ fontSize: 42, mb: 1, opacity: 0.9 }} />
+          <Typography variant="h6" sx={{ fontWeight: 700, mb: 1 }}>Service Area</Typography>
+          <Typography sx={{ opacity: 0.8, mb: 3 }}>
+            We cover all locations across Bengaluru city.
+          </Typography>
+          <Box sx={{ height: "300px", borderRadius: "18px", overflow: "hidden", border: "1px solid rgba(255,255,255,0.15)", mb: 3 }}>
+            <iframe
+              title="Bengaluru Service Area"
+              src="https://www.google.com/maps?q=Bengaluru&output=embed"
+              width="100%"
+              height="100%"
+              style={{ border: 0 }}
+              loading="lazy"
+            />
+          </Box>
+          <Divider sx={{ background: "rgba(255,255,255,0.15)", mb: 3 }} />
+          <Box sx={{ display: "flex", justifyContent: "center", gap: 2, flexWrap: "wrap" }}>
+            <Button
+              href="tel:+18001234567"
+              startIcon={<Call />}
+              sx={{
+                background: "linear-gradient(135deg,#2563eb,#1d4ed8)",
+                color: "white",
+                px: 3,
+                py: 1.2,
+                borderRadius: "12px",
+                fontWeight: 700,
+                '&:hover': { background: "linear-gradient(135deg,#1d4ed8,#0ea5e9)" }
+              }}
+            >
+              Toll-Free
+            </Button>
+            <Button
+              href="https://wa.me/919542220772"
+              startIcon={<WhatsApp />}
+              sx={{
+                background: theme.success,
+                color: "white",
+                px: 3,
+                py: 1.2,
+                borderRadius: "12px",
+                fontWeight: 700,
+                '&:hover': { background: '#047857' }
+              }}
+            >
+              WhatsApp
+            </Button>
+          </Box>
+        </Box>
 
+        {/* TRUST BADGE */}
+        <Box sx={{ textAlign: "center", pb: 2 }}>
+          <Typography
+            variant="caption"
+            sx={{
+              color: theme.textMuted,
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              gap: 1
+            }}
+          >
+            <Verified sx={{ fontSize: 16 }} /> Trusted by 1000+ households in Bengaluru
+          </Typography>
+        </Box>
+
+      </Container>
     </Box>
   );
 };

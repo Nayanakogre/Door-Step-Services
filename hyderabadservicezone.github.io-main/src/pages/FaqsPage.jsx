@@ -1,192 +1,236 @@
-import React from 'react';
-import { 
-  Box, 
-  Typography, 
-  List, 
-  ListItem, 
-  ListItemIcon, 
+import React from "react";
+import {
+  Box,
+  Typography,
   Accordion,
   AccordionSummary,
   AccordionDetails,
-  Divider
-} from '@mui/material';
+  Divider,
+  Container,
+  Grid,
+  Paper,
+} from "@mui/material";
 import {
   ExpandMore,
   CheckCircle,
+  Cancel,
+  VerifiedUser,
+  SupportAgent,
   Phone,
   Email,
-  Build,
-  VerifiedUser,
-  HelpOutline,
-  SupportAgent,
-  Cancel
-} from '@mui/icons-material';
+} from "@mui/icons-material";
 
 const FaqsPage = () => {
   const theme = {
-    primary: "#0f172a", // Your signature Deep Slate
-    accent: "#2563eb",  // Trust Blue
-    bg: "#f8fafc",
-    card: "#ffffff",
+    primary: "#ffffff", // headings white
+    accent: "#ff9800", // orange accent
+    bg: "linear-gradient(0deg, rgb(43, 62, 205) 0%, #030c50 50%, #223fc2 100%)",
+    card: "#ffffff", // microcards white
     border: "#e2e8f0",
-    textMain: "#1e293b",
-    textMuted: "#64748b",
-    success: "#059669"
+    textMain: "#1f2937",
+    textMuted: "#cbd5e1",
+    success: "#10b981",
+  };
+
+  const sectionWrapper = { maxWidth: "1200px", margin: "0 auto 60px auto" };
+  const mainCard = {
+    backgroundColor: theme.card,
+    borderRadius: "26px",
+    padding: "36px",
+    border: `1px solid ${theme.border}`,
+    boxShadow: "0 10px 30px rgba(0,0,0,0.05)",
   };
 
   const faqs = [
     {
       question: "Do you offer doorstep service in Bengaluru?",
-      answer: "Yes, we provide doorstep appliance repair services across Bengaluru city and nearby localities. Our technician will visit your home to diagnose and fix the issue promptly."
+      answer:
+        "Yes, we provide doorstep appliance repair services across Bengaluru city and nearby areas. Our technician visits your home to diagnose and fix the issue.",
     },
     {
       question: "What appliances do you repair?",
       answer: (
-        <Box>
-          <Typography variant="body2" sx={{ mb: 1.5, fontWeight: 600 }}>We repair all major home appliances:</Typography>
-          <List dense sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', sm: '1fr 1fr' }, gap: 0.5 }}>
-            {["Washing Machines", "Refrigerators", "Air Conditioners", "Microwave Ovens", "Dishwashers", "Air Coolers"].map((item) => (
-              <ListItem key={item} sx={{ p: 0 }}>
-                <ListItemIcon sx={{ minWidth: 28 }}><CheckCircle sx={{ color: theme.success, fontSize: 18 }} /></ListItemIcon>
-                <Typography variant="body2">{item}</Typography>
-              </ListItem>
-            ))}
-          </List>
+        <Box sx={{ display: "flex", flexDirection: "column", gap: 1 }}>
+          {[
+            "Washing Machines",
+            "Refrigerators",
+            "Air Conditioners",
+            "Microwave Ovens",
+            "Dishwashers",
+            "Air Coolers",
+          ].map((item) => (
+            <Box key={item} sx={{ display: "flex", alignItems: "center", gap: 1 }}>
+              <CheckCircle sx={{ color: theme.success, fontSize: 18 }} />
+              <Typography variant="body2">{item}</Typography>
+            </Box>
+          ))}
         </Box>
-      )
+      ),
     },
     {
       question: "Are you an authorized service center?",
-      answer: "No. Bengaluru Repair Services is an independent provider. We are not affiliated with or authorized by any specific brand. Brand names are used only for identification purposes."
+      answer:
+        "No. Bengaluru Repair Services is an independent repair provider and is not affiliated with any specific brand.",
     },
     {
       question: "How much do you charge for inspection?",
-      answer: "Our inspection charges start from ₹199. This covers the technician's travel and a professional diagnosis. Final repair costs are quoted based on the specific issue found."
+      answer:
+        "Inspection charges start from ₹199. Final repair cost depends on the issue and spare parts required.",
     },
     {
       question: "Is there a warranty on repairs?",
-      answer: "Yes. We offer a 30-day warranty on labor and 3–6 months on spare parts (depending on the part replaced). If the same issue reoccurs within this period, we fix it for free."
+      answer:
+        "Yes. We provide 30-day labor warranty and 3–6 months warranty on replaced spare parts.",
     },
     {
-      question: "Can I cancel or reschedule a booking?",
+      question: "Can I cancel or reschedule booking?",
       answer: (
-        <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
-          <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
-            <Cancel sx={{ color: '#ef4444', fontSize: 18 }} />
-            <Typography variant="body2">Inform us 2 hours before the scheduled time.</Typography>
+        <Box sx={{ display: "flex", flexDirection: "column", gap: 1 }}>
+          <Box sx={{ display: "flex", gap: 1 }}>
+            <Cancel sx={{ color: "#ef4444", fontSize: 18 }} />
+            <Typography variant="body2">Inform at least 2 hours before schedule.</Typography>
           </Box>
-          <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
+          <Box sx={{ display: "flex", gap: 1 }}>
             <VerifiedUser sx={{ color: theme.success, fontSize: 18 }} />
-            <Typography variant="body2">No cancellation charges for timely notice.</Typography>
+            <Typography variant="body2">No cancellation charges with prior notice.</Typography>
           </Box>
         </Box>
-      )
-    }
+      ),
+    },
   ];
 
   return (
-    <Box sx={{ backgroundColor: theme.bg, minHeight: '100vh', py: 8, px: 2 }}>
-      <Box sx={{ maxWidth: 650, margin: '0 auto' }}>
-        
-        {/* HEADER SECTION */}
-        <Box sx={{ textAlign: 'center', mb: 6 }}>
-          <Box sx={{ 
-            display: 'inline-flex', 
-            alignItems: 'center', 
-            gap: 1, 
-            px: 2, 
-            py: 0.5, 
-            borderRadius: '100px', 
-            backgroundColor: '#dbeafe', 
-            color: theme.accent,
-            mb: 2
-          }}>
-            <HelpOutline sx={{ fontSize: 14 }} />
-            <Typography variant="caption" sx={{ fontWeight: 700, letterSpacing: 1, textTransform: 'uppercase' }}>Help Center</Typography>
-          </Box>
-          <Typography variant="h3" sx={{ fontWeight: 800, color: theme.primary, mb: 1, letterSpacing: '-0.02em' }}>
-            FAQs
+    <Box sx={{ background: theme.bg, minHeight: "100vh", py: 10, px: 2 }}>
+      <Container>
+
+        {/* ================= HERO HEADER ================= */}
+        <Box sx={{ textAlign: "center", mb: 10, position: "relative" }}>
+          {/* Glow */}
+          <Box
+            sx={{
+              position: "absolute",
+              top: "-50px",
+              left: "50%",
+              transform: "translateX(-50%)",
+              width: "280px",
+              height: "280px",
+              background: "radial-gradient(circle, rgba(255,152,0,0.18) 0%, rgba(255,152,0,0) 70%)",
+              zIndex: 0,
+            }}
+          />
+          <Typography
+            variant="h2"
+            sx={{
+              fontWeight: 900,
+              fontSize: { xs: "2.3rem", md: "3.2rem" },
+              color: theme.primary,
+              letterSpacing: "-0.04em",
+              position: "relative",
+              zIndex: 1,
+              mb: 2,
+            }}
+          >
+            Frequently Asked Questions
           </Typography>
-          <Typography sx={{ color: theme.textMuted }}>
-            Quick answers for Bengaluru Repair Services customers.
+          <Box
+            sx={{
+              width: "130px",
+              height: "6px",
+              margin: "0 auto",
+              borderRadius: "30px",
+              background: theme.accent,
+              boxShadow: "0 4px 14px rgba(255,152,0,0.4)",
+              mb: 3,
+            }}
+          />
+          <Typography
+            sx={{
+              color: theme.textMuted,
+              fontSize: "1.1rem",
+              maxWidth: "640px",
+              margin: "0 auto",
+              lineHeight: 1.7,
+            }}
+          >
+            Quick answers to common questions about our appliance repair services in Bengaluru.
           </Typography>
         </Box>
 
-        {/* FAQ LIST (UX: Individual Card Flow) */}
-        <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
-          {faqs.map((faq, index) => (
-            <Accordion 
-              key={index} 
-              elevation={0}
-              disableGutters
-              sx={{ 
-                borderRadius: '20px !important', 
-                border: `1px solid ${theme.border}`,
-                overflow: 'hidden',
-                '&:before': { display: 'none' },
-                boxShadow: '0 4px 6px -1px rgba(0,0,0,0.05)'
-              }}
-            >
-              <AccordionSummary 
-                expandIcon={<ExpandMore sx={{ color: theme.accent }} />}
-                sx={{ 
-                  px: 3, 
-                  py: 1, 
-                  backgroundColor: theme.card,
-                  '& .MuiTypography-root': { fontWeight: 700, color: theme.primary }
+        {/* ================= FAQ CARD ================= */}
+        <Box sx={sectionWrapper}>
+          <Box sx={mainCard}>
+            {faqs.map((faq, index) => (
+              <Accordion
+                key={index}
+                elevation={0}
+                disableGutters
+                sx={{
+                  borderRadius: "16px !important",
+                  border: `1px solid ${theme.border}`,
+                  mb: 2,
+                  overflow: "hidden",
+                  "&:before": { display: "none" },
                 }}
               >
-                <Typography>{faq.question}</Typography>
-              </AccordionSummary>
-              <AccordionDetails sx={{ px: 3, pb: 3, pt: 0, backgroundColor: theme.card }}>
-                <Divider sx={{ mb: 2, opacity: 0.5 }} />
-                <Typography variant="body2" component="div" sx={{ color: theme.textMuted, lineHeight: 1.7 }}>
-                  {faq.answer}
-                </Typography>
-              </AccordionDetails>
-            </Accordion>
-          ))}
-        </Box>
+                <AccordionSummary
+                  expandIcon={<ExpandMore sx={{ color: theme.accent }} />}
+                  sx={{
+                    backgroundColor: theme.card,
+                    px: 3,
+                    py: 1.5,
+                    "& .MuiTypography-root": { fontWeight: 700, color: theme.textMain },
+                  }}
+                >
+                  <Typography>{faq.question}</Typography>
+                </AccordionSummary>
 
-        {/* SUPPORT CTA (UX: Deep Slate Gradient) */}
-        <Box sx={{ 
-          mt: 6, 
-          borderRadius: '24px', 
-          background: `linear-gradient(135deg, ${theme.primary} 0%, #1e293b 100%)`, 
-          color: 'white',
-          p: 4,
-          textAlign: 'center'
-        }}>
-          <SupportAgent sx={{ fontSize: 48, color: theme.accent, mb: 2 }} />
-          <Typography variant="h6" sx={{ fontWeight: 700, mb: 1 }}>Still have questions?</Typography>
-          <Typography variant="body2" sx={{ opacity: 0.8, mb: 3 }}>
-            Our team is available 24/7 for doorstep support in Bengaluru.
-          </Typography>
-          
-          <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1.5, alignItems: 'center' }}>
-            <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-              <Phone sx={{ fontSize: 18, color: theme.accent }} />
-              <Typography variant="subtitle2" sx={{ fontWeight: 700 }}>+91 95422 20772</Typography>
-            </Box>
-            <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-              <Email sx={{ fontSize: 18, color: theme.accent }} />
-              <Typography variant="subtitle2" sx={{ fontWeight: 700 }}>bengalururepairservices@gmail.com</Typography>
-            </Box>
+                <AccordionDetails
+                  sx={{ px: 3, pb: 3, pt: 0, backgroundColor: theme.card }}
+                >
+                  <Divider sx={{ mb: 2, opacity: 0.3 }} />
+                  <Typography variant="body2" component="div" sx={{ color: theme.textMain, lineHeight: 1.7 }}>
+                    {faq.answer}
+                  </Typography>
+                </AccordionDetails>
+              </Accordion>
+            ))}
           </Box>
         </Box>
 
-        {/* DISCLAIMER */}
-        <Typography variant="caption" sx={{ 
-          display: 'block', 
-          textAlign: 'center', 
-          mt: 4, 
-          color: theme.textMuted,
-          lineHeight: 1.5
-        }}>
-          <strong>Note:</strong> Bengaluru Repair Services is an independent provider. 
-          Brand names are used for reference only.
+        {/* ================= SUPPORT CARD ================= */}
+       
+<Box sx={{ ...mainCard, mt: 6, textAlign: "center" }}>
+  <SupportAgent sx={{ fontSize: 46, color: theme.accent, mb: 2 }} />
+  <Typography variant="h6" sx={{ fontWeight: 700, mb: 1, color: theme.textMain }}>
+    Still have questions?
+  </Typography>
+  <Typography variant="body2" sx={{ color: theme.textMuted, mb: 3 }}>
+    Our support team is available for doorstep help.
+  </Typography>
+  <Box sx={{ display: "flex", flexDirection: "column", gap: 1, alignItems: "center" }}>
+    <Box sx={{ display: "flex", gap: 1 }}>
+      <Phone sx={{ fontSize: 18, color: theme.accent }} />
+      <Typography fontWeight={700} sx={{ color: theme.textMain }}>
+        Toll-Free: 1800 123 4567
+      </Typography>
+    </Box>
+    <Box sx={{ display: "flex", gap: 1 }}>
+      <Email sx={{ fontSize: 18, color: theme.accent }} />
+      <Typography fontWeight={700} sx={{ color: theme.textMain }}>
+        bengalururepairservices@gmail.com
+      </Typography>
+    </Box>
+  </Box>
+</Box>
+
+        {/* ================= DISCLAIMER ================= */}
+        <Typography
+          variant="caption"
+          sx={{ display: "block", textAlign: "center", mt: 4, color: theme.textMuted, lineHeight: 1.5 }}
+        >
+          <strong>Note:</strong> Bengaluru Repair Services is an independent provider. Brand names are used for reference only.
         </Typography>
-      </Box>
+      </Container>
     </Box>
   );
 };

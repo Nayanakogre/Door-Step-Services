@@ -1,38 +1,111 @@
+/* ============================= */
+/* GLOBAL RESET */
+/* ============================= */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ============================= */
+/* ROOT + BODY */
+/* ============================= */
+
+html,
+body,
+#root {
+  height: 100%;
+  font-family: "Inter", "Segoe UI", sans-serif;
+  background: #020617; /* matches your dark theme */
+  scroll-behavior: smooth;
+}
+
+/* ============================= */
+/* APP MAIN LAYOUT */
+/* ============================= */
+
 .App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
+/* Main content grows to push footer down */
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+main {
+  flex: 1;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+/* ============================= */
+/* HEADER FIX SUPPORT */
+/* (if header is fixed/sticky) */
+/* ============================= */
+
+header {
+  width: 100%;
+  z-index: 999;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* ============================= */
+/* FOOTER DEFAULT */
+/* ============================= */
+
+footer {
+  width: 100%;
+  margin-top: auto;
+}
+
+/* ============================= */
+/* LINKS */
+/* ============================= */
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* ============================= */
+/* IMAGES */
+/* ============================= */
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ============================= */
+/* BUTTON RESET */
+/* ============================= */
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  outline: none;
+}
+
+/* ============================= */
+/* SCROLLBAR (OPTIONAL THEME) */
+/* ============================= */
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #020617;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #3b82f6;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #60a5fa;
 }
